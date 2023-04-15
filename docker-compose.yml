@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  mysql:
+    image: mysql:5.7.38
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - 3306:3306
+    command: mysqld --sql_mode=""
+    volumes:
+      - ./db/U_VOCAB.sql:/docker-entrypoint-initdb.d/U_VOCAB.sql
