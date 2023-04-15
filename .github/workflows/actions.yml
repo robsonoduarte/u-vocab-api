@@ -24,8 +24,4 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
-        run: |
-          echo ${{ secrets.DB_USER }} | sed 's/./& /g'
-          echo ${{ secrets.DB_PASSWORD }} | sed 's/./& /g'
-          echo ${{ secrets.DB_HOST }} | sed 's/./& /g'
-          ./gradlew build
+        run: ./gradlew build
