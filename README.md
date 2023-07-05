@@ -6,7 +6,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 
 ### TODO:
 
- * `[]` conf - setup java zulu-20.30.11
+ * `[X]` conf - setup java zulu-20.30.11
  * `[]` conf - sonarquebe cloud github action with gradle
  * `[]` conf - docker-compose mysql 8.X last version
  * `[]` conf - groovy gradle configuration
