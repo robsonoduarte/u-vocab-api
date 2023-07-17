@@ -20,7 +20,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
       - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
+        uses: kitabisa/sonarqube-action@v1.2.0
       - name: Build and analyze
         env:
           DB_USER: ${{ secrets.DB_USER }}
