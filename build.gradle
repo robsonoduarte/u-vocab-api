@@ -50,8 +50,8 @@ jacocoTestReport {
 
 sonar {
 	properties {
-		property "sonar.projectKey", "gradle"
-		property "sonar.organization", "=robsonoduarte"
+		property "sonar.projectKey", "robsonoduarte_u-vocab-api"
+		property "sonar.organization", "uvocab"
 		property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.tests", [
 				"${project.projectDir}/src/test/java",
