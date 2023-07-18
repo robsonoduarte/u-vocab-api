@@ -48,7 +48,7 @@ jacocoTestReport {
 	dependsOn test
 }
 
-sonarqube {
+sonar {
 	properties {
 		property "sonar.projectKey", "gradle"
 		property "sonar.organization", "=robsonoduarte"
@@ -59,6 +59,6 @@ sonarqube {
 	}
 }
 
-tasks.named('sonarqube').configure {
+tasks.named('sonarsonarqube').configure {
 	dependsOn jacocoTestReport
 }
