@@ -1,8 +1,11 @@
 # uvocab-api
 The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 
-[Read Me First](https://github.com/robsonoduarte/u-vocab-api/blob/main/HELP.md)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=robsonoduarte_u-vocab-api)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=robsonoduarte_u-vocab-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=robsonoduarte_u-vocab-api)
+
+[Read Me First](https://github.com/robsonoduarte/u-vocab-api/blob/main/HELP.md)
 
 ### TODO:
 
