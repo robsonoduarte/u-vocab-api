@@ -59,6 +59,6 @@ sonar {
 	}
 }
 
-tasks.named('sonarsonarqube').configure {
+tasks.named('sonar').configure {
 	dependsOn jacocoTestReport
 }
