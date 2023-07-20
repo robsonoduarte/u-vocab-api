@@ -29,10 +29,6 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Check with Gradle
-        run: ./gradlew check --info
       - name: Build and analyze
         env:
           DB_USER: ${{ secrets.DB_USER }}
