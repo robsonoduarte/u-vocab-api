@@ -7,6 +7,8 @@ plugins {
 	id 'jacoco'
 }
 
+apply plugin: 'groovy'
+
 group = 'com'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '20'
@@ -61,4 +63,11 @@ sonar {
 
 tasks.named('sonar').configure {
 	dependsOn jacocoTestReport
+}
+
+sourceSets {
+	main {
+		java { srcDirs = [] }
+		groovy { srcDirs = ["src"] }
+	}
 }
