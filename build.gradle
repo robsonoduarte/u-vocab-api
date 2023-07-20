@@ -38,6 +38,16 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
+if (!project.hasProperty('noDockerCompose')) {
+	dockerCompose {
+		stopContainers = true
+		removeContainers = true
+		removeVolumes = true
+		waitForTcpPorts = true
+	}
+	dockerCompose.isRequiredBy(test)
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
