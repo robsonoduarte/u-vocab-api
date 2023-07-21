@@ -12,7 +12,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - setup java zulu-20.30.11
  * `[X]` conf - sonarquebe cloud github action with gradle
  * `[X]` conf - docker-compose mysql 8.X last version withe gradle docker compose
- * `[]` conf - groovy gradle configuration
+ * `[X]` conf - groovy gradle configuration to test
  * `[]` conf - spockframework
  * `[]` conf - gradle spotless google format
  * `[]` conf - gradle docker plugin springboot application
