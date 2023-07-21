@@ -30,13 +30,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	testImplementation 'junit:junit:4.13.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
-	implementation 'org.codehaus.groovy:groovy-all:2.4.5'
-	implementation 'junit:junit:4.12'
+	testImplementation 'org.codehaus.groovy:groovy:3.0.18'
 }
 
 if (!project.hasProperty('noDockerCompose')) {
@@ -73,11 +73,4 @@ sonar {
 
 tasks.named('sonar').configure {
 	dependsOn jacocoTestReport
-}
-
-sourceSets {
-	main {
-		java { srcDirs = [] }
-		groovy { srcDirs = ["src"]}
-	}
 }
