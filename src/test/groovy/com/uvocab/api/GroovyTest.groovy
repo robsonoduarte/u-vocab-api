@@ -1,9 +1,10 @@
+/* (C) 2023 */
 package com.uvocab.api
 
 
-import org.junit.jupiter.api.Test
-
 import static org.junit.jupiter.api.Assertions.assertEquals
+
+import org.junit.jupiter.api.Test
 
 class GroovyTest{
     @Test

@@ -1,3 +1,4 @@
+/* (C) 2023 */
 package com.uvocab.api
 
 import spock.lang.Specification

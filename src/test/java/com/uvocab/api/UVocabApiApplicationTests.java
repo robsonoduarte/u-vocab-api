@@ -1,3 +1,4 @@
+/* (C) 2023 */
 package com.uvocab.api;
 
 import org.junit.jupiter.api.Assertions;
@@ -8,9 +9,8 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("test")
 class UVocabApiApplicationTests {
-	@Test
-	void contextLoads() {
-		Assertions.assertTrue(true);
-	}
-
+  @Test
+  void contextLoads() {
+    Assertions.assertTrue(true);
+  }
 }
