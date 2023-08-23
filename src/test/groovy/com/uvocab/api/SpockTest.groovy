@@ -7,7 +7,7 @@ class SpockTest extends Specification {
     def "should be a simple assertion" () {
         expect:
         1 == 1
-        
+
     }
 
 }
