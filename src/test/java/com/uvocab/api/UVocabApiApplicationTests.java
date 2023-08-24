@@ -1,4 +1,3 @@
-/* (C) 2023 */
 package com.uvocab.api;
 
 import org.junit.jupiter.api.Assertions;

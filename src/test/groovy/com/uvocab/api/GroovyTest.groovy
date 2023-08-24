@@ -1,6 +1,4 @@
-/* (C) 2023 */
 package com.uvocab.api
-
 
 import static org.junit.jupiter.api.Assertions.assertEquals
 
