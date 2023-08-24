@@ -7,7 +7,6 @@ plugins {
 	id 'jacoco'
 	id 'groovy'
 	id 'com.diffplug.spotless' version '6.20.0'
-
 }
 
 group = 'com'
@@ -38,8 +37,6 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.codehaus.groovy:groovy:3.0.18'
 	testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
-	implementation 'com.diffplug.spotless:spotless-plugin-gradle:6.20.0'
-
 }
 
 if (!project.hasProperty('noDockerCompose')) {
@@ -69,7 +66,7 @@ sonar {
 		property "sonar.organization", "uvocab"
 		property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.tests", [
-				"${project.projectDir}/src/test/java",
+			"${project.projectDir}/src/test/java",
 		]
 	}
 }
@@ -80,29 +77,11 @@ tasks.named('sonar').configure {
 
 spotless {
 	java {
-
-		importOrder()
-		toggleOffOn()
-		palantirJavaFormat()
-		removeUnusedImports()
-		trimTrailingWhitespace()
-		endWithNewline()
-
-		cleanthat()
 		googleJavaFormat()
-
-		formatAnnotations()
-
-		licenseHeader '/* (C) 2023 */'
-
 	}
 
 	groovy {
-		importOrder()
+		greclipse()
+	}
 
-		licenseHeader '/* (C) 2023 */'
-	}
-	groovyGradle {
-		target '*.gradle'
-	}
 }

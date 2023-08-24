@@ -5,10 +5,8 @@ import spock.lang.Specification
 
 
 class SpockTest extends Specification {
-    def "should be a simple assertion" () {
-        expect:
-        1 == 1
-
-    }
-
+	def "should be a simple assertion" () {
+		expect:
+		1 == 1
+	}
 }
