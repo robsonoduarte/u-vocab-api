@@ -6,7 +6,7 @@ plugins {
 	id 'com.avast.gradle.docker-compose' version '0.16.12'
 	id 'jacoco'
 	id 'groovy'
-
+	id 'com.diffplug.spotless' version '6.20.0'
 }
 
 group = 'com'
@@ -66,11 +66,23 @@ sonar {
 		property "sonar.organization", "uvocab"
 		property "sonar.host.url", "https://sonarcloud.io"
 		property "sonar.tests", [
-				"${project.projectDir}/src/test/java",
+			"${project.projectDir}/src/test/java",
 		]
 	}
 }
 
 tasks.named('sonar').configure {
 	dependsOn jacocoTestReport
+}
+
+spotless {
+	java {
+		googleJavaFormat()
+	}
+	groovy {
+		greclipse()
+	}
+	groovyGradle {
+		greclipse()
+	}
 }

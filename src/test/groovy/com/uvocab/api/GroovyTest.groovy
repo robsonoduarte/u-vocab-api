@@ -1,13 +1,12 @@
 package com.uvocab.api
 
+import static org.junit.jupiter.api.Assertions.assertEquals
 
 import org.junit.jupiter.api.Test
 
-import static org.junit.jupiter.api.Assertions.assertEquals
-
 class GroovyTest{
-    @Test
-    void test() {
-        assertEquals(1, 1);
-    }
+	@Test
+	void test() {
+		assertEquals(1, 1);
+	}
 }
