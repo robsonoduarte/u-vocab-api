@@ -14,7 +14,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - docker-compose mysql 8.X last version withe gradle docker compose
  * `[X]` conf - groovy gradle configuration to test
  * `[X]` conf - spockframework
- * `[]` conf - gradle spotless google format
+ * `[X]` conf - gradle spotless google format
  * `[]` conf - gradle docker plugin springboot application
  * `[]` conf - u-vocab-proto as github submodule
  * `[]` conf - protobuf gradle
