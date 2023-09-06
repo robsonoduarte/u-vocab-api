@@ -21,4 +21,8 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[]` conf - lombok
  * `[]` dev - springboot security with jwt
  * `[]` dev - end point auth token jwt
+ * `[]` conf - env var config of database in build.gradle
+ * `[]` conf - tag images with git commit hash as version ( makefile )
+ * `[]` conf - push image to docker hub ( makefile )
+ * `[]` run image in ec2 ( deploy ) ( makefile )
  * `[]` next steps infra and deploy api ...
