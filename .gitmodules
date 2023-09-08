@@ -1,0 +1,3 @@
+[submodule "u_vocab"]
+	path = u_vocab
+	url = https://github.com/robsonoduarte/u_vocab.git
