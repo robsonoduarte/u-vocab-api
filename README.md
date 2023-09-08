@@ -15,7 +15,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - groovy gradle configuration to test
  * `[X]` conf - spockframework
  * `[X]` conf - gradle spotless google format
- * `[]` conf - gradle docker plugin springboot application
+ * `[X]` conf - gradle docker plugin springboot application
  * `[]` conf - u-vocab-proto as github submodule
  * `[]` conf - protobuf gradle
  * `[]` conf - lombok
