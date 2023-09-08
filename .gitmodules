@@ -1,0 +1,3 @@
+[submodule "u-vocab-protobuf"]
+	path = u-vocab-protobuf
+	url = git@github.com:Danilosimoes/u-vocab-protobuf.git
