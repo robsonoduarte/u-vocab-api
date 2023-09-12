@@ -1,14 +1,16 @@
 package com.uvocab.api
 
 import org.junit.jupiter.api.Test
+import uvocab.protobuf.v1.Proto
 
 import static org.junit.jupiter.api.Assertions.assertEquals
 
 class GroovyProtoTest {
 	@Test
-
 	void test() {
-		Test
-		assertEquals(1, 1);
+		def proto = Proto.newBuilder()
+				.setTest("test")
+				.build()
+		assertEquals('test', proto.getTest());
 	}
 }

@@ -105,8 +105,9 @@ sourceSets {
 			srcDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
 		}
 		proto {
-			srcDir 'u-uvocab-protobuf/'
+			srcDir 'u-vocab-protobuf/'
 			include '**/*.proto'
+			//exclude 'google/**/*.proto'
 		}
 	}
 }
