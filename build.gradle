@@ -32,7 +32,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
-	implementation 'com.google.protobuf:protobuf-java:4.0.0-rc-2'
+	implementation 'com.google.protobuf:protobuf-java:3.24.3'
 	implementation 'io.grpc:grpc-protobuf:1.58.0'
 	implementation 'io.grpc:grpc-stub:1.58.0'
 	implementation 'io.grpc:grpc-netty:1.58.0'
@@ -102,29 +102,16 @@ docker {
 sourceSets {
 	main {
 		java {
-			srcDirs 'build/generated/source/proto/main/grpc'
-			srcDirs 'build/generated/source/proto/main/java'
+			srcDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
 		}
 		proto {
-			srcDirs 'u-vocab-protobuf/protobuf/v1'
+			srcDir 'u-uvocab-protobuf/'
+			include '**/*.proto'
 		}
 	}
 }
 
 protobuf {
-	protoc {
-
-		artifact = "com.google.protobuf:protoc:21.0-rc-1"
-	}
-	plugins {
-		grpc {
-			artifact = "io.grpc:protoc-gen-grpc-java:1.58.0"
-		}
-	}
-	generateProtoTasks {
-		all()*.plugins {
-			grpc {}
-		}
-	}
+	protoc { artifact = "com.google.protobuf:protoc:3.24.3" }
 }
 
