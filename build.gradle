@@ -84,6 +84,7 @@ tasks.named('sonar').configure {
 spotless {
 	java {
 		googleJavaFormat()
+		target 'src/**/*.java'
 	}
 	groovy {
 		greclipse()
