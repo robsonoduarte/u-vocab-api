@@ -8,7 +8,7 @@ plugins {
 	id 'groovy'
 	id 'com.diffplug.spotless' version '6.20.0'
 	id 'com.bmuschko.docker-spring-boot-application' version '9.3.2'
-	id "com.google.protobuf" version "0.8.13"
+	id "com.google.protobuf" version "0.9.4"
 }
 
 group = 'com'
@@ -99,13 +99,8 @@ docker {
 
 sourceSets {
 	main {
-		java {
-			srcDirs += file("${protobuf.generatedFilesBaseDir}/main/java")
-		}
 		proto {
 			srcDir 'u-vocab-protobuf/'
-			include '**/*.proto'
-			//exclude 'google/**/*.proto'
 		}
 	}
 }
