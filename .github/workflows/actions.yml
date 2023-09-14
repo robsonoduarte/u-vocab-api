@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-          token: ${{ secrets.U-VOCAB-ACCESS }}
+          token: ${{ secrets.UVOCAB_ACTIONS_PATH }}
       - name: Setup JDK 20
         uses: actions/setup-java@v3
         with:
