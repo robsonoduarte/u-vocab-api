@@ -8,6 +8,7 @@ plugins {
 	id 'groovy'
 	id 'com.diffplug.spotless' version '6.20.0'
 	id 'com.bmuschko.docker-spring-boot-application' version '9.3.2'
+	id "com.google.protobuf" version "0.9.4"
 }
 
 group = 'com'
@@ -31,6 +32,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'com.google.protobuf:protobuf-java:3.24.3'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -79,6 +81,7 @@ tasks.named('sonar').configure {
 spotless {
 	java {
 		googleJavaFormat()
+		target 'src/**/*.java'
 	}
 	groovy {
 		greclipse()
@@ -92,5 +95,17 @@ docker {
 	springBootApplication {
 		baseImage = 'azul/zulu-openjdk:20.0.2-20.32.11'
 	}
+}
+
+sourceSets {
+	main {
+		proto {
+			srcDir 'u-vocab-protobuf/'
+		}
+	}
+}
+
+protobuf {
+	protoc { artifact = "com.google.protobuf:protoc:3.24.3" }
 }
 
