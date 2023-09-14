@@ -17,12 +17,13 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - gradle spotless google format
  * `[X]` conf - gradle docker plugin springboot application
  * `[X]` conf - u-vocab-proto as github submodule
- * `[]` conf - protobuf gradle
+ * `[X]` conf - protobuf gradle
  * `[]` conf - lombok
- * `[]` dev - springboot security with jwt
- * `[]` dev - end point auth token jwt
  * `[]` conf - env var config of database in build.gradle
  * `[]` conf - tag images with git commit hash as version ( makefile )
  * `[]` conf - push image to docker hub ( makefile )
  * `[]` run image in ec2 ( deploy ) ( makefile )
+ * `[]` dev - end point - GET
+ * `[]` dev - springboot security with jwt
+ * `[]` dev - end point auth token jwt
  * `[]` next steps infra and deploy api ...
