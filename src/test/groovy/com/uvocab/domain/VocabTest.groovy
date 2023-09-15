@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 class VocabTest {
 	@Test
 	void test () {
-		def words = new Vocab(1)
-
-		assertEquals(1,words)
+		def vocab = new Vocab()
+		vocab.world = 'home'
+		assertEquals('home', vocab.world);
 	}
 }
