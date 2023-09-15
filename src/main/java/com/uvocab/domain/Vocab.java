@@ -1,4 +1,4 @@
-package com.uvocab;
+package com.uvocab.domain;
 
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Builder
 @Data
-public class domain {
-  private String test;
+public class Vocab {
+  private String word;
 }
