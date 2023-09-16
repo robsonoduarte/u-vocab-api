@@ -18,7 +18,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - gradle docker plugin springboot application
  * `[X]` conf - u-vocab-proto as github submodule
  * `[X]` conf - protobuf gradle
- * `[]` conf - lombok
+ * `[X]` conf - lombok
  * `[]` conf - env var config of database in build.gradle
  * `[]` conf - tag images with git commit hash as version ( makefile )
  * `[]` conf - push image to docker hub ( makefile )
