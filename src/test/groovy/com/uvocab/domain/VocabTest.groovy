@@ -7,7 +7,7 @@ class VocabTest {
 	@Test
 	void test () {
 		def vocab = new Vocab()
-		vocab.world = 'home'
-		assertEquals('home', vocab.world);
+		vocab.word = 'home'
+		assertEquals('home', vocab.word);
 	}
 }
