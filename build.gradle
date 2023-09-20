@@ -95,11 +95,17 @@ docker {
 		baseImage = 'azul/zulu-openjdk:20.0.2-20.32.11'
 	}
 }
+
 dockerCreateDockerfile {
+
+	instruction 'RUN ls -la'
 	environmentVariable 'DB_USER', System.getenv('DB_USER')
 	environmentVariable 'DB_PASSWORD', System.getenv('DB_PASSWORD')
 	environmentVariable 'DB_HOST', System.getenv('DB_HOST')
+	environmentVariable 'JAVA_OPTS', '-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap'
 }
+
+
 
 sourceSets {
 	main {
