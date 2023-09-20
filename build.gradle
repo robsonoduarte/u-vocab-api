@@ -95,6 +95,11 @@ docker {
 		baseImage = 'azul/zulu-openjdk:20.0.2-20.32.11'
 	}
 }
+dockerCreateDockerfile {
+	environmentVariable 'DB_USER', System.getenv('DB_USER')
+	environmentVariable 'DB_PASSWORD', System.getenv('DB_PASSWORD')
+	environmentVariable 'DB_HOST', System.getenv('DB_HOST')
+}
 
 sourceSets {
 	main {
