@@ -10,10 +10,11 @@ plugins {
 	id 'com.bmuschko.docker-spring-boot-application' version '9.3.2'
 	id "com.google.protobuf" version "0.9.4"
 	id "io.freefair.lombok" version "8.3"
+	id 'com.palantir.git-version' version '3.0.0'
 }
 
 group = 'com'
-version = '0.0.1-SNAPSHOT'
+version = gitVersion()
 sourceCompatibility = '20'
 
 configurations {
@@ -116,3 +117,8 @@ protobuf {
 	protoc { artifact = "com.google.protobuf:protoc:3.24.3" }
 }
 
+
+allprojects {
+	def details = versionDetails()
+	println details
+}
