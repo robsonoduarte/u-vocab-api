@@ -13,6 +13,14 @@ plugins {
 	id 'com.palantir.git-version' version '3.0.0'
 }
 
+ext.gitVersion = {
+	def result = 'git describe --tags --always --dirty'.execute().text.trim()
+	if (result.endsWith('-dirty')) {
+		return result.replaceAll('-dirty', '-SNAPSHOT')
+	}
+	return result
+}
+
 group = 'com'
 version = gitVersion()
 sourceCompatibility = '20'
@@ -122,3 +130,4 @@ allprojects {
 	def details = versionDetails()
 	println details
 }
+
