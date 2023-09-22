@@ -10,19 +10,11 @@ plugins {
 	id 'com.bmuschko.docker-spring-boot-application' version '9.3.2'
 	id "com.google.protobuf" version "0.9.4"
 	id "io.freefair.lombok" version "8.3"
-	id 'com.palantir.git-version' version '3.0.0'
 }
 
-ext.gitVersion = {
-	def result = 'git describe --tags --always --dirty'.execute().text.trim()
-	if (result.endsWith('-dirty')) {
-		return result.replaceAll('-dirty', '-SNAPSHOT')
-	}
-	return result
-}
 
 group = 'com'
-version = gitVersion()
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '20'
 
 configurations {
@@ -111,8 +103,6 @@ dockerCreateDockerfile {
 	environmentVariable 'DB_HOST', System.getenv('DB_HOST')
 }
 
-
-
 sourceSets {
 	main {
 		proto {
@@ -126,8 +116,5 @@ protobuf {
 }
 
 
-allprojects {
-	def details = versionDetails()
-	println details
-}
+
 
