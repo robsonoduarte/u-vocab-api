@@ -6,3 +6,10 @@ build/image:
 	@echo " "
 	./gradlew dockerBuildImage --parallel -Pversion=${VERSION}
 	docker tag u-vocab-api:${VERSION} uvocab/u-vocab-api:${VERSION}
+
+login/push:
+	@echo " "
+	@echo "Push image u-vocab-api:${VERSION}"
+	@echo " "
+	docker login -u="${DOCKER_LOGIN}" -p="${DOCKER_PASSWORD}"
+	docker push uvocab/u-vocab-api:${VERSION}
