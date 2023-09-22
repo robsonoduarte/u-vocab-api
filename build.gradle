@@ -12,8 +12,6 @@ plugins {
 	id "io.freefair.lombok" version "8.3"
 }
 
-group = 'com'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '20'
 
 configurations {
@@ -102,8 +100,6 @@ dockerCreateDockerfile {
 	environmentVariable 'DB_HOST', System.getenv('DB_HOST')
 }
 
-
-
 sourceSets {
 	main {
 		proto {
@@ -115,4 +111,3 @@ sourceSets {
 protobuf {
 	protoc { artifact = "com.google.protobuf:protoc:3.24.3" }
 }
-

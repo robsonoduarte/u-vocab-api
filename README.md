@@ -20,7 +20,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - protobuf gradle
  * `[X]` conf - lombok
  * `[X]` conf - env var config of database in build.gradle
- * `[]` conf - tag images with git commit hash as version ( makefile )
+ * `[X]` conf - tag images with git commit hash as version ( makefile )
  * `[]` conf - push image to docker hub ( makefile )
  * `[]` run image in ec2 ( deploy ) ( makefile )
  * `[]` dev - end point - GET
