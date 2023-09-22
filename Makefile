@@ -1,21 +1,8 @@
-REPOSITORY := com
-DOCKER_IMAGE_NAME := u-vocab-api
-COMMIT_HASH := $(shell git rev-parse HEAD)
+VERSION := $(shell git rev-parse --short HEAD)
 
-CURRENT_DIR := $(shell pwd)
-
-build:
-	./gradlew build
-
-clean:
-	./gradlew clean
-
-image:
-	./gradlew dockerBuildImage
-
-tag:
-	docker build -t $(REPOSITORY)/$(DOCKER_IMAGE_NAME):$(COMMIT_HASH)	.
-
-
-
-.PHONY: build tag
+build/image:
+	@echo " "
+	@echo "Building image u-vocab-api:${VERSION}"
+	@echo " "
+	./gradlew dockerBuildImage --parallel -Pversion=${VERSION}
+	docker tag u-vocab-api:${VERSION} uvocab/u-vocab-api:${VERSION}

@@ -12,9 +12,6 @@ plugins {
 	id "io.freefair.lombok" version "8.3"
 }
 
-
-group = 'com'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '20'
 
 configurations {
