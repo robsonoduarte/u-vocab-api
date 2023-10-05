@@ -95,9 +95,9 @@ docker {
 }
 
 dockerCreateDockerfile {
-	environmentVariable 'DB_USER', System.getenv('DB_USER')
-	environmentVariable 'DB_PASSWORD', System.getenv('DB_PASSWORD')
-	environmentVariable 'DB_HOST', System.getenv('DB_HOST')
+	environmentVariable 'DB_USER', System.getenv('DB_USER') ?: ''
+	environmentVariable 'DB_PASSWORD', System.getenv('DB_PASSWORD') ?: ''
+	environmentVariable 'DB_HOST', System.getenv('DB_HOST') ?: ''
 }
 
 sourceSets {
