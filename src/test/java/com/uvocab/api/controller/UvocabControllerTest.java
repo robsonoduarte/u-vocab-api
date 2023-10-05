@@ -3,6 +3,7 @@ package com.uvocab.api.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.HttpMethod.GET;
 
+import com.uvocab.api.domain.Vocab;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,8 +19,8 @@ class UvocabControllerTest {
 
   @Test
   void shouldReturnSimpleStringOK() {
-    var response = restTemplate.exchange("/v1/uvocab", GET, null, String.class);
+    var response = restTemplate.exchange("/v1/uvocab", GET, null, Vocab.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals("OK", response.getBody());
+    assertEquals("OK", response.getBody().getWord());
   }
 }

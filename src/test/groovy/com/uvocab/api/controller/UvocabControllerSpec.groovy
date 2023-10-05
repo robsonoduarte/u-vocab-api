@@ -1,5 +1,6 @@
 package com.uvocab.api.controller
 
+import com.uvocab.api.domain.Vocab
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -18,9 +19,9 @@ class UvocabControllerSpec extends Specification{
 	TestRestTemplate restTemplate
 
 	def "should return the string as ok"(){
-		def response = restTemplate.exchange('/v1/uvocab', GET, null, String)
+		def response = restTemplate.exchange('/v1/uvocab', GET, null, Vocab)
 		expect:
 		response.statusCode == HttpStatus.OK
-		response.body == "OK"
+		response.body.word == "OK"
 	}
 }
