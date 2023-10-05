@@ -15,6 +15,12 @@ push/image:
 	docker login -u="${DOCKER_LOGIN}" -p="${DOCKER_PASSWORD}"
 	docker push uvocab/u-vocab-api:${VERSION}
 
+deploy/app:
+	@echo " "
+	@echo "Deploy u-vocab-api:${VERSION}"
+	@echo " "
+    ssh -i "${SSH_KEY}" "${EC2_USER}"@"${EC2_INSTANCE}" bash -s < deploy.sh ${VERSION} ${DOCKER_LOGIN} ${DOCKER_PASSWORD}
+
 
 
 
