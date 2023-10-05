@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/uvocab")
+@RequestMapping("/v1/uvocab")
 public class UvocabController {
   @GetMapping
   public String testMessage() {

@@ -36,7 +36,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.codehaus.groovy:groovy:3.0.18'
-	testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+	testImplementation 'org.spockframework:spock-core:2.4-M1-groovy-3.0'
+	testImplementation 'org.spockframework:spock-spring:2.4-M1-groovy-3.0'
 }
 
 if (!project.hasProperty('noDockerCompose')) {
