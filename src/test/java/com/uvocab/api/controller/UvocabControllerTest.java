@@ -12,14 +12,14 @@ import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles({"test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UvocabControllerJavaTest {
+class UvocabControllerJavaTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
   @Test
-  public void shouldReturnSimpleStringOK() {
+  void shouldReturnSimpleStringOK() {
     var response = restTemplate.exchange("/v1/uvocab", GET, null, String.class);
-    assertEquals(response.getStatusCode(), HttpStatus.OK);
-    assertEquals(response.getBody(), "OK");
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals("OK", response.getBody());
   }
 }
