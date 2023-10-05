@@ -18,7 +18,7 @@ class UvocabControllerSpec extends Specification{
 	@Autowired
 	TestRestTemplate restTemplate
 
-	def "should return the string as ok"(){
+	def "should return the vocab with word ok"(){
 		def response = restTemplate.exchange('/v1/uvocab', GET, null, Vocab)
 		expect:
 		response.statusCode == HttpStatus.OK

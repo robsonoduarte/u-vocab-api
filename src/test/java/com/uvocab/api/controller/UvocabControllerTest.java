@@ -18,7 +18,7 @@ class UvocabControllerTest {
   @Autowired private TestRestTemplate restTemplate;
 
   @Test
-  void shouldReturnSimpleStringOK() {
+  void shouldReturnVocabWitWorkOK() {
     var response = restTemplate.exchange("/v1/uvocab", GET, null, Vocab.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals("OK", response.getBody().getWord());
