@@ -28,13 +28,13 @@ jacoco { toolVersion = "0.8.10" }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-security' // disable temporally util start dev...
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'com.google.protobuf:protobuf-java:3.24.3'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	// testImplementation 'org.springframework.security:spring-security-test' // disable temporally util start dev...
 	testImplementation 'org.codehaus.groovy:groovy:3.0.18'
 	testImplementation 'org.spockframework:spock-core:2.4-M1-groovy-3.0'
 	testImplementation 'org.spockframework:spock-spring:2.4-M1-groovy-3.0'
