@@ -12,7 +12,7 @@ import static org.springframework.http.HttpMethod.GET
 
 @ActiveProfiles(['test'])
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class UvocabControllerGroovyTest extends Specification{
+class UvocabControllerSpec extends Specification{
 
 	@Autowired
 	TestRestTemplate restTemplate
