@@ -17,7 +17,7 @@ push/image:
 
 deploy/image:
 	@echo " "
-	@echo "Deploy u-vocab-api:${VERSION}"
+	@echo "Deploying u-vocab-api:${VERSION}"
 	@echo " "
 	ssh -i ${SSH_KEY} ${EC2_USER}@${EC2_INSTANCE} bash -s < deploy.sh ${VERSION} ${DOCKER_LOGIN} ${DOCKER_PASSWORD}
 
