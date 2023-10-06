@@ -12,7 +12,10 @@ plugins {
 	id "io.freefair.lombok" version "8.3"
 }
 
-sourceCompatibility = '20'
+java {
+	sourceCompatibility = JavaVersion.VERSION_20
+	targetCompatibility = JavaVersion.VERSION_20
+}
 
 configurations {
 	compileOnly {
