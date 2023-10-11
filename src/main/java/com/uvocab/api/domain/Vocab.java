@@ -1,4 +1,4 @@
-package com.uvocab.domain;
+package com.uvocab.api.domain;
 
 import lombok.Data;
 
