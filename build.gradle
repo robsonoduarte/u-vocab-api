@@ -18,10 +18,10 @@ java {
 }
 
 testing {
-	test{
-		useJUnitPlatform()
-	}
 	suites {
+		test {
+			useJUnitJupiter()
+		}
 		integrationTest(JvmTestSuite) {
 			dependencies {
 				implementation project()
