@@ -17,12 +17,30 @@ java {
 	targetCompatibility = JavaVersion.VERSION_20
 }
 
+testing {
+	suites {
+		integrationTest(JvmTestSuite) {
+			dependencies {
+				implementation project()
+			}
+			sources {
+				java {
+					srcDirs = ['src/it/java']
+				}
+				groovy {
+					srcDirs = ['src/it/groovy']
+				}
+			}
+		}
+	}
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
-	integrationImplementation.extendsFrom testImplementation
-	integrationRuntime.extendsFrom testRuntime
+	integrationTestImplementation.extendsFrom testImplementation
+	integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
 }
 
 repositories {
@@ -54,7 +72,7 @@ if (!project.hasProperty('noDockerCompose')) {
 		removeVolumes = true
 		waitForTcpPorts = true
 	}
-	dockerCompose.isRequiredBy(test)
+	dockerCompose.isRequiredBy(integrationTest)
 }
 
 tasks.named('test') {
@@ -65,26 +83,8 @@ jacocoTestReport {
 	reports {
 		xml.required = true
 	}
-	dependsOn test
+	dependsOn test,integrationTest
 }
-
-sourceSets {
-	integration {
-		groovy.srcDir "$projectDir/src/integration/groovy"
-		resources.srcDir "$projectDir/src/integration/resources"
-		compileClasspath += main.output + test.output
-		runtimeClasspath += main.output + test.output
-	}
-}
-
-task integrationTest(type: Test) {
-	testClassesDirs = sourceSets.integration.output.classesDirs
-	classpath = sourceSets.integration.runtimeClasspath
-}
-
-check.dependsOn integrationTest
-
-
 
 sonar {
 	properties {
@@ -100,6 +100,10 @@ sonar {
 
 tasks.named('sonar').configure {
 	dependsOn jacocoTestReport
+}
+
+tasks.named('check') {
+	dependsOn(testing.suites.integrationTest)
 }
 
 spotless {
