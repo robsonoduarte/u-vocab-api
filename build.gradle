@@ -66,6 +66,31 @@ jacocoTestReport {
 	dependsOn test
 }
 
+sourceSets {
+	integration {
+		groovy.srcDir "$projectDir/src/integration/groovy"
+		resources.srcDir "$projectDir/src/integration/resources"
+		compileClasspath += main.output + test.output
+		runtimeClasspath += main.output + test.output
+	}
+}
+
+configurations {
+	integrationImplementation.extendsFrom testImplementation
+	integrationRuntime.extendsFrom testRuntime
+}
+
+
+
+task integrationTest(type: Test) {
+	testClassesDirs = sourceSets.integration.output.classesDirs
+	classpath = sourceSets.integration.runtimeClasspath
+}
+
+check.dependsOn integrationTest
+
+
+
 sonar {
 	properties {
 		property "sonar.projectKey", "robsonoduarte_u-vocab-api"
