@@ -18,6 +18,9 @@ java {
 }
 
 testing {
+	test{
+		useJUnitPlatform()
+	}
 	suites {
 		integrationTest(JvmTestSuite) {
 			dependencies {
@@ -73,10 +76,6 @@ if (!project.hasProperty('noDockerCompose')) {
 		waitForTcpPorts = true
 	}
 	dockerCompose.isRequiredBy(integrationTest)
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }
 
 jacocoTestReport {
