@@ -21,6 +21,8 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	integrationImplementation.extendsFrom testImplementation
+	integrationRuntime.extendsFrom testRuntime
 }
 
 repositories {
@@ -74,13 +76,6 @@ sourceSets {
 		runtimeClasspath += main.output + test.output
 	}
 }
-
-configurations {
-	integrationImplementation.extendsFrom testImplementation
-	integrationRuntime.extendsFrom testRuntime
-}
-
-
 
 task integrationTest(type: Test) {
 	testClassesDirs = sourceSets.integration.output.classesDirs
