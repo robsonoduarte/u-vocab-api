@@ -23,7 +23,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - tag images with git commit hash as version ( makefile )
  * `[X]` conf - push image to docker hub ( makefile )
  * `[X]` conf - run image in ec2 ( deploy ) ( makefile )
- * `[]`  conf - separate the unit test and it tests
+ * `[X]`  conf - separate the unit test and it tests
  * `[X]` dev - simple endpoint with it test - GET
  * `[]` dev - springboot security with jwt
  * `[]` dev - end point auth token jwt
