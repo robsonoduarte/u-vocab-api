@@ -17,10 +17,33 @@ java {
 	targetCompatibility = JavaVersion.VERSION_20
 }
 
+testing {
+	suites {
+		test {
+			useJUnitJupiter()
+		}
+		integrationTest(JvmTestSuite) {
+			dependencies {
+				implementation project()
+			}
+			sources {
+				java {
+					srcDirs = ['src/it/java']
+				}
+				groovy {
+					srcDirs = ['src/it/groovy']
+				}
+			}
+		}
+	}
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	integrationTestImplementation.extendsFrom testImplementation
+	integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
 }
 
 repositories {
@@ -52,18 +75,14 @@ if (!project.hasProperty('noDockerCompose')) {
 		removeVolumes = true
 		waitForTcpPorts = true
 	}
-	dockerCompose.isRequiredBy(test)
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
+	dockerCompose.isRequiredBy(integrationTest)
 }
 
 jacocoTestReport {
 	reports {
 		xml.required = true
 	}
-	dependsOn test
+	dependsOn test,integrationTest
 }
 
 sonar {
@@ -80,6 +99,10 @@ sonar {
 
 tasks.named('sonar').configure {
 	dependsOn jacocoTestReport
+}
+
+tasks.named('check') {
+	dependsOn(testing.suites.integrationTest)
 }
 
 spotless {
