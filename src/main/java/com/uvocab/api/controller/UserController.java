@@ -13,7 +13,6 @@ public class UserController {
 
   @PostMapping
   public ResponseEntity<String> postUser(@RequestBody User user) {
-
     return ResponseEntity.ok("");
   }
 }
