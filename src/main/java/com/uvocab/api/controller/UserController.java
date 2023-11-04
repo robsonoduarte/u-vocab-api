@@ -21,7 +21,7 @@ public class UserController {
 
   @PostMapping
   public User postUser(UVocabPostUser uVocabPostUser) {
-    User user = User.
+    User user = User. // aqui eu não estou conseguindo utilizar o construtor
     return uVocabRepository.save(user);
   }
 }
