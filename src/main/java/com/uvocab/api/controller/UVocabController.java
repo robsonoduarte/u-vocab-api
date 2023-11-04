@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/uvocab")
-public class UvocabController {
+public class UVocabController {
   @GetMapping
   public ResponseEntity<Vocab> getVocab() {
     var vocab = new Vocab("OK");
