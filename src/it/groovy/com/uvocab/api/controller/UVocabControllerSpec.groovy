@@ -13,7 +13,7 @@ import static org.springframework.http.HttpMethod.GET
 
 @ActiveProfiles(['test'])
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class UvocabControllerSpec extends Specification{
+class UVocabControllerSpec extends Specification{
 
 	@Autowired
 	TestRestTemplate restTemplate
@@ -22,6 +22,6 @@ class UvocabControllerSpec extends Specification{
 		def response = restTemplate.exchange('/v1/uvocab', GET, null, Vocab)
 		expect:
 		response.statusCode == HttpStatus.OK
-		response.body.word == "OK"
+		response.body.word() == "OK"
 	}
 }

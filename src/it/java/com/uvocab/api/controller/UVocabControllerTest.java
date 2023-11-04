@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles({"test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class UvocabControllerTest {
+class UVocabControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
 
