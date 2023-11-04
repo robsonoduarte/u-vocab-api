@@ -8,7 +8,18 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 [Read Me First](https://github.com/robsonoduarte/u-vocab-api/blob/main/HELP.md)
 
 ### TODO:
+ 
+ * `[]` dev - post user 
+ * `[]` dev - get user
+ * `[]` dev - post word
+ * `[]` dev - get list word with pagition
+ * `[]` dev - get shuffle work
+ * `[]` dev - springboot security with jwt
+ * `[]` dev - end point auth token jwt
+ 
 
+
+### DONE:
  * `[X]` conf - setup java zulu-20.30.11
  * `[X]` conf - sonarquebe cloud github action with gradle
  * `[X]` conf - docker-compose mysql 8.X last version withe gradle docker compose
@@ -23,8 +34,5 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - tag images with git commit hash as version ( makefile )
  * `[X]` conf - push image to docker hub ( makefile )
  * `[X]` conf - run image in ec2 ( deploy ) ( makefile )
- * `[X]`  conf - separate the unit test and it tests
+ * `[X]` conf - separate the unit test and it tests
  * `[X]` dev - simple endpoint with it test - GET
- * `[]` dev - springboot security with jwt
- * `[]` dev - end point auth token jwt
- * `[]` next steps infra and deploy api ...
