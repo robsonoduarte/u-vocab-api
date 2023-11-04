@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.HttpMethod.GET;
 
 import com.uvocab.api.domain.Vocab;
+import java.util.Objects;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,6 @@ class UvocabControllerTest {
   void shouldReturnVocabWitWorkOK() {
     var response = restTemplate.exchange("/v1/uvocab", GET, null, Vocab.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals("OK", response.getBody().getWord());
+    assertEquals("OK", Objects.requireNonNull(response.getBody()).word());
   }
 }

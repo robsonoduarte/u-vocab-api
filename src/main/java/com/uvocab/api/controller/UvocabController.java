@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class UvocabController {
   @GetMapping
   public ResponseEntity<Vocab> getVocab() {
-    var vocab = new Vocab();
-    vocab.setWord("OK");
+    var vocab = new Vocab("OK");
     return ResponseEntity.ok(vocab);
   }
 }
