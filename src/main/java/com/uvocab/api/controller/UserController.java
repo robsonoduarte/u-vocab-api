@@ -21,7 +21,7 @@ public class UserController {
 
   @PostMapping
   public User postUser(UVocabPostUser uVocabPostUser) {
-    User user = User.
-    return uVocabRepository.save(user);
+    User user = User
+    return uVocabRepository.save();
   }
 }
