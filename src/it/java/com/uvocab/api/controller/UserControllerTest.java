@@ -27,6 +27,6 @@ class UserControllerTest {
             .build(); // branch no proto criand o user
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), String.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    // assertEquals("OK", response.getBody());
+    assertEquals("OK", response.getBody());
   }
 }
