@@ -22,6 +22,6 @@ class UvocabControllerSpec extends Specification{
 		def response = restTemplate.exchange('/v1/uvocab', GET, null, Vocab)
 		expect:
 		response.statusCode == HttpStatus.OK
-		response.body.word == "OK"
+		response.body.word == "BLA"
 	}
 }

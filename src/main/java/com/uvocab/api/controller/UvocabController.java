@@ -10,7 +10,7 @@ public class UvocabController {
   @GetMapping
   public ResponseEntity<Vocab> getVocab() {
     var vocab = new Vocab();
-    vocab.setWord("OK");
+    vocab.setWord("BLA");
     return ResponseEntity.ok(vocab);
   }
 }
