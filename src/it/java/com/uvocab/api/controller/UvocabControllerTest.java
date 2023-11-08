@@ -21,6 +21,6 @@ class UvocabControllerTest {
   void shouldReturnVocabWitWorkOK() {
     var response = restTemplate.exchange("/v1/uvocab", GET, null, Vocab.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals("BLA", response.getBody().getWord());
+    assertEquals("OK", response.getBody().getWord());
   }
 }
