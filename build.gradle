@@ -80,6 +80,7 @@ if (!project.hasProperty('noDockerCompose')) {
 }
 
 jacocoTestReport {
+	executionData integrationTest
 	reports {
 		xml.required = true
 	}
