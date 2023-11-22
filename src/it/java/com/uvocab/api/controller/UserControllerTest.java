@@ -20,14 +20,10 @@ class UserControllerTest {
 
   @Test
   void shouldPostTheUser() {
-    var user =
-        User.newBuilder()
-            .setLogin("danilo")
-            .setEmail("danilo@uvocab.edu")
-            .build();
+    var user = User.newBuilder().setLogin("danilo").setEmail("danilo@uvocab.edu").build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals("OK", response.getBody());
-    //assertEquals(1, response.getBody().getId());
+    // assertEquals(1, response.getBody().getId());
   }
 }
