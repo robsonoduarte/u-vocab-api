@@ -1,10 +1,9 @@
 package com.uvocab.api.controller;
 
-import com.uvocab.api.repository.UVocabRepository;
-import com.uvocab.api.request.UVocabPostUser;
-import lombok.extern.slf4j.Slf4j;
-import org.mapstruct.control.MappingControl;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.uvocab.api.mapper.UserMapper;
+import com.uvocab.api.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,14 +13,18 @@ import uvocab.protobuf.v1.User;
 
 @RestController
 @RequestMapping("/v1/user")
-@Slf4j
+@AllArgsConstructor
 public class UserController {
 
-  @Autowired private UVocabRepository uVocabRepository;
+  private final UserRepository userRepository;
+  private final UserMapper userMapper;
 
   @PostMapping
-  public User postUser(UVocabPostUser uVocabPostUser) {
-    User user = User. // aqui eu não estou conseguindo utilizar o construtor
-    return uVocabRepository.save(user);
+  public ResponseEntity<User> postUser(@RequestBody User user) {
+    System.out.println(user);
+    // uvocab.protobuf.v1.User user = uvocab.protobuf.v1.User. // aqui eu não estou conseguindo
+    // utilizar o construtor
+    // return uVocabRepository.save(user);
+    return ResponseEntity.ok(User.newBuilder().build());
   }
 }

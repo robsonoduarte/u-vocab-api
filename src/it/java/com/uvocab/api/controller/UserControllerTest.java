@@ -22,11 +22,12 @@ class UserControllerTest {
   void shouldPostTheUser() {
     var user =
         User.newBuilder()
-            .setLogin("Danilo")
-            .setEmail("danilossimoes28@gmail.com")
-            .build(); // branch no proto criand o user
-    var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), String.class);
+            .setLogin("danilo")
+            .setEmail("danilo@uvocab.edu")
+            .build();
+    var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals("OK", response.getBody());
+    //assertEquals(1, response.getBody().getId());
   }
 }

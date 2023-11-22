@@ -4,6 +4,6 @@ USE U_VOCAB;
 CREATE TABLE USERS
 (
     ID BIGINT AUTO_INCREMENT PRIMARY KEY,
-    login varchar(50),
-    email varchar(100)
+    LOGIN varchar(50),
+    EMAIL varchar(100)
 );
