@@ -24,6 +24,6 @@ public class UserController {
     // uvocab.protobuf.v1.User user = uvocab.protobuf.v1.User. // aqui eu não estou conseguindo
     // utilizar o construtor
     // return uVocabRepository.save(user);
-    return ResponseEntity.ok(User.newBuilder().build());
+    return ResponseEntity.ok(User.newBuilder().setId(2).build());
   }
 }
