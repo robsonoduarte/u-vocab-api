@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import uvocab.protobuf.v1.User;
 
-public class UserMapperTest {
+class UserMapperTest {
   UserMapper mapper = new UserMapper();
 
   @Test
