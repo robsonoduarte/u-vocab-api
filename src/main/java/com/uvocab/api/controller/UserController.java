@@ -20,10 +20,7 @@ public class UserController {
 
   @PostMapping
   public ResponseEntity<User> postUser(@RequestBody User user) {
-    System.out.println(user);
-    // uvocab.protobuf.v1.User user = uvocab.protobuf.v1.User. // aqui eu não estou conseguindo
-    // utilizar o construtor
-    // return uVocabRepository.save(user);
-    return ResponseEntity.ok(User.newBuilder().setId(2).build());
+    var x = userRepository.save(userMapper.toDomain(user));
+    return ResponseEntity.ok(userMapper.toProto(x));
   }
 }
