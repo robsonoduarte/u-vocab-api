@@ -1,7 +1,6 @@
 package com.uvocab.api.controller;
 
 import com.uvocab.api.mapper.UserMapper;
-import com.uvocab.api.repository.UserRepository;
 import com.uvocab.api.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +22,6 @@ public class UserController {
   public ResponseEntity<User> postUser(@RequestBody User user) {
     userService.saveUser(userMapper.toDomain(user));
 
-
     return ResponseEntity.ok(user);
-
   }
 }
