@@ -122,7 +122,7 @@ spotless {
 
 docker {
 	springBootApplication {
-		baseImage = 'azul/zulu-openjdk:20.0.2-20.32.11'
+		baseImage = 'azul/zulu-openjdk:21.0.1'
 	}
 }
 
