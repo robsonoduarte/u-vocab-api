@@ -2,6 +2,7 @@ package com.uvocab.api.controller;
 
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
+import com.uvocab.api.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,12 +16,15 @@ import uvocab.protobuf.v1.User;
 @AllArgsConstructor
 public class UserController {
 
-  private final UserRepository userRepository;
   private final UserMapper userMapper;
+  private final UserService userService;
 
   @PostMapping
   public ResponseEntity<User> postUser(@RequestBody User user) {
-    var x = userRepository.save(userMapper.toDomain(user));
-    return ResponseEntity.ok(userMapper.toProto(x));
+    userService.saveUser(userMapper.toDomain(user));
+
+
+    return ResponseEntity.ok(user);
+
   }
 }
