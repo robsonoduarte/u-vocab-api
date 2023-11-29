@@ -9,7 +9,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 
 ### TODO:
  
- * `[]` dev - post user 
+ * `[X]` dev - post user 
  * `[]` dev - get user
  * `[]` dev - post word
  * `[]` dev - get list word with pagition
