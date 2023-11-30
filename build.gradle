@@ -57,13 +57,14 @@ dependencies {
 	// disable temporally util start dev...
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'com.google.protobuf:protobuf-java:3.24.3'
 	implementation 'com.google.protobuf:protobuf-java-util:3.24.3'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// disable temporally util start dev...
-	// testImplementation 'org.springframework.security:spring-security-test'
+	//testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.codehaus.groovy:groovy:3.0.18'
 	testImplementation 'org.spockframework:spock-core:2.4-M1-groovy-3.0'
 	testImplementation 'org.spockframework:spock-spring:2.4-M1-groovy-3.0'
