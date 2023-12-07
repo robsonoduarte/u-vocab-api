@@ -9,7 +9,7 @@ class UserMapperTest {
   UserMapper mapper = new UserMapper();
 
   @Test
-  void shouldMapperUserProtoToUserRecord() {
+  void shouldMapperUserProtoToUserDomain() {
     var proto = User.newBuilder().setLogin("danilo").setEmail("danilo@uvocab.edu").build();
     var record = mapper.toDomain(proto);
     assertEquals("danilo", record.getLogin());
@@ -17,7 +17,7 @@ class UserMapperTest {
   }
 
   @Test
-  void shouldMapperRecordToUserProto() {
+  void shouldMapperDomainToUserProto() {
     var domain =
         com.uvocab.api.domain.User.builder()
             .id(1)

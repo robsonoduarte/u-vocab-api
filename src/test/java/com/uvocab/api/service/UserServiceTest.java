@@ -1,11 +1,11 @@
 package com.uvocab.api.service;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -36,7 +36,7 @@ class UserServiceTest {
 
     var protoSaved = userService.save(proto);
 
-    Assertions.assertEquals(protoSaved, proto);
+    assertEquals(protoSaved, proto);
 
     verify(userMapper).toDomain(proto);
     verify(userMapper).toProto(domain);

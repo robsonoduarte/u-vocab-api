@@ -11,7 +11,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  
  * `[X]` dev - post user 
  * `[]` dev - get user
- * `[]` dev - post word
+ * `[X]` dev - post word
  * `[]` dev - get list word with pagition
  * `[]` dev - get shuffle work
  * `[]` dev - springboot security with jwt

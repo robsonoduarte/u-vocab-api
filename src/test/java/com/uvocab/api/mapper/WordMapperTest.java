@@ -9,14 +9,14 @@ class WordMapperTest {
   WordMapper mapper = new WordMapper();
 
   @Test
-  void shouldMapperWordProtoToWordRecord() {
+  void shouldMapperWordProtoToWordDomain() {
     var proto = Word.newBuilder().setWord("Home").build();
     var record = mapper.toDomain(proto);
     assertEquals("Home", record.getWord());
   }
 
   @Test
-  void shouldMapperRecordToWordProto() {
+  void shouldMapperDomainToWordProto() {
     var domain = com.uvocab.api.domain.Word.builder().id(1).word("Home").build();
     var proto = mapper.toProto(domain);
     assertEquals(1, proto.getId());
