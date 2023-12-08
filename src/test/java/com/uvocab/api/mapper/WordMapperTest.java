@@ -10,16 +10,16 @@ class WordMapperTest {
 
   @Test
   void shouldMapperWordProtoToWordDomain() {
-    var proto = Word.newBuilder().setWord("Home").build();
+    var proto = Word.newBuilder().setValue("Home").build();
     var domain = mapper.toDomain(proto);
-    assertEquals("Home", domain.getWord());
+    assertEquals("Home", domain.getValue());
   }
 
   @Test
   void shouldMapperDomainToWordProto() {
-    var domain = com.uvocab.api.domain.Word.builder().id(1).word("Home").build();
+    var domain = com.uvocab.api.domain.Word.builder().id(1).value("Home").build();
     var proto = mapper.toProto(domain);
     assertEquals(1, proto.getId());
-    assertEquals("Home", proto.getWord());
+    assertEquals("Home", proto.getValue());
   }
 }

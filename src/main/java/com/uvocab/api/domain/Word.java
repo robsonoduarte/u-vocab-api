@@ -18,6 +18,6 @@ public class Word {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   long id;
 
-  @Column(name = "WORD")
-  String word;
+  @Column(name = "VALUE")
+  String value;
 }

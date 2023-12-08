@@ -19,10 +19,11 @@ class WordControllerTest {
 
   @Test
   void shouldpostWord() {
-    var word = Word.newBuilder().setWord("Home").build();
+    var value = Word.newBuilder().setId(1).setValue("Home").build();
     var response =
-        restTemplate.exchange("/v1/word", HttpMethod.POST, new HttpEntity<>(word), Word.class);
+        restTemplate.exchange("/v1/word", HttpMethod.POST, new HttpEntity<>(value), Word.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals("Home", word.getWord());
+    assertEquals(1, response.getBody().getId());
+    assertEquals("Home", value.getValue());
   }
 }
