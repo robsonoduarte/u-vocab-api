@@ -19,5 +19,5 @@ public class Word {
   long id;
 
   @Column(name = "WORD")
-  String wordText;
+  String word;
 }

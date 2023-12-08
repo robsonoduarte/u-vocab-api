@@ -11,13 +11,13 @@ class WordMapperTest {
   @Test
   void shouldMapperWordProtoToWordDomain() {
     var proto = Word.newBuilder().setWord("Home").build();
-    var record = mapper.toDomain(proto);
-    assertEquals("Home", record.getWordText());
+    var domain = mapper.toDomain(proto);
+    assertEquals("Home", domain.getWord());
   }
 
   @Test
   void shouldMapperDomainToWordProto() {
-    var domain = com.uvocab.api.domain.Word.builder().id(1).wordText("Home").build();
+    var domain = com.uvocab.api.domain.Word.builder().id(1).word("Home").build();
     var proto = mapper.toProto(domain);
     assertEquals(1, proto.getId());
     assertEquals("Home", proto.getWord());

@@ -1,6 +1,7 @@
 package com.uvocab.api.controller;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,7 @@ class WordControllerTest {
     var word = Word.newBuilder().setWord("Home").build();
     var response =
         restTemplate.exchange("/v1/word", HttpMethod.POST, new HttpEntity<>(word), Word.class);
-    Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-    Assertions.assertEquals("Home", word.getWord());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals("Home", word.getWord());
   }
 }

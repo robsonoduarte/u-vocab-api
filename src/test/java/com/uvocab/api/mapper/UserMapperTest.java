@@ -11,9 +11,9 @@ class UserMapperTest {
   @Test
   void shouldMapperUserProtoToUserDomain() {
     var proto = User.newBuilder().setLogin("danilo").setEmail("danilo@uvocab.edu").build();
-    var record = mapper.toDomain(proto);
-    assertEquals("danilo", record.getLogin());
-    assertEquals("danilo@uvocab.edu", record.getEmail());
+    var domain = mapper.toDomain(proto);
+    assertEquals("danilo", domain.getLogin());
+    assertEquals("danilo@uvocab.edu", domain.getEmail());
   }
 
   @Test
