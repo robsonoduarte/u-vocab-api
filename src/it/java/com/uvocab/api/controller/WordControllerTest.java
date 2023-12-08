@@ -1,30 +1,29 @@
 package com.uvocab.api.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.http.HttpMethod.POST;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
-import uvocab.protobuf.v1.User;
+import uvocab.protobuf.v1.Word;
 
 @ActiveProfiles({"test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class UserControllerTest {
-
+class WordControllerTest {
   @Autowired private TestRestTemplate restTemplate;
 
   @Test
-  void shouldPostTheUser() {
-    var user = User.newBuilder().setId(1).setLogin("danilo").setEmail("danilo@uvocab.edu").build();
-    var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
+  void shouldpostWord() {
+    var value = Word.newBuilder().setId(1).setValue("Home").build();
+    var response =
+        restTemplate.exchange("/v1/word", HttpMethod.POST, new HttpEntity<>(value), Word.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(1, response.getBody().getId());
-    assertEquals("danilo", user.getLogin());
-    assertEquals("danilo@uvocab.edu", user.getEmail());
+    assertEquals("Home", value.getValue());
   }
 }
