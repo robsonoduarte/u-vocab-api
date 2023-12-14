@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.uvocab.api.domain.User;
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,5 +42,15 @@ class UserServiceTest {
     verify(userMapper).toDomain(proto);
     verify(userMapper).toProto(domain);
     verify(userRepository).save(domain);
+  }
+  @Test
+  void shouldFindTheUser(){
+    Long id = 1l;
+    var user = userRepository.findById(id);
+    var foundUser = userService.get(user);
+
+    assertEquals(user, foundUser);
+
+
   }
 }
