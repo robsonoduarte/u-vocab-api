@@ -4,9 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.uvocab.api.domain.User;
+import com.uvocab.api.exception.NotFoundException;
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
+import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,14 +44,34 @@ class UserServiceTest {
     verify(userMapper).toProto(domain);
     verify(userRepository).save(domain);
   }
+
   @Test
-  void shouldFindTheUser(){
-    Long id = 1l;
-    var user = userRepository.findById(id);
-    var foundUser = userService.get(user);
+  void shouldFindTheUserById() {
+    var id = 1L;
+    var domain = com.uvocab.api.domain.User.builder().id(1).build();
+    var proto = uvocab.protobuf.v1.User.newBuilder().setId(1).build();
 
-    assertEquals(user, foundUser);
+    when(userRepository.findById(id)).thenReturn(Optional.of(domain));
+    when(userMapper.toProto(domain)).thenReturn(proto);
 
+    var foundUser = userService.findById(id);
 
+    assertEquals(proto, foundUser);
+
+    verify(userMapper).toProto(domain);
+    verify(userRepository).findById(id);
+  }
+
+  @Test()
+  void shouldThrowAException() {
+    // request -> controller -> service -> repository
+    // request <- controller  <-  handlerException <- exp <- service
+    var id = 1L;
+    when(userRepository.findById(id)).thenReturn(Optional.empty());
+    assertThrows(
+        NotFoundException.class,
+        () -> {
+          userService.findById(id);
+        });
   }
 }

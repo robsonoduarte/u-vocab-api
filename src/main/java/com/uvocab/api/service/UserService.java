@@ -1,10 +1,10 @@
 package com.uvocab.api.service;
 
+import com.uvocab.api.exception.NotFoundException;
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.events.Event;
 import uvocab.protobuf.v1.User;
 
 @Service
@@ -17,9 +17,11 @@ public class UserService {
     return userMapper.toProto(userRepository.save(userMapper.toDomain(user)));
   }
 
-  public Long get(Long id){
-    var user = userRepository.findById(id);
-
-    return userMapper.toProto(user);
+  public User findById(long id) {
+    var optional = userRepository.findById(id);
+    if (optional.isPresent()) {
+      return userMapper.toProto(optional.get());
+    }
+    throw new NotFoundException("User not found to id: " + id);
   }
 }

@@ -1,8 +1,11 @@
 package com.uvocab.api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
+import com.uvocab.api.mapper.UserMapper;
+import com.uvocab.api.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +20,8 @@ import uvocab.protobuf.v1.User;
 class UserControllerTest {
 
   @Autowired private TestRestTemplate restTemplate;
+  private UserMapper userMapper;
+  private UserRepository userRepository;
 
   @Test
   void shouldPostTheUser() {
@@ -26,5 +31,12 @@ class UserControllerTest {
     assertEquals(1, response.getBody().getId());
     assertEquals("danilo", user.getLogin());
     assertEquals("danilo@uvocab.edu", user.getEmail());
+  }
+
+  @Test
+  void shouldGetTheUser() {
+    var response = restTemplate.exchange("/v1/user/" + 1, GET, null, User.class);
+    System.out.println(response);
+    assertEquals(HttpStatus.OK, response.getStatusCode());
   }
 }
