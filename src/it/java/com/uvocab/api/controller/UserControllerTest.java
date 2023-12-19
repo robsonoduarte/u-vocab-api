@@ -35,8 +35,7 @@ class UserControllerTest {
 
   @Test
   void shouldGetTheUser() {
-    var response = restTemplate.exchange("/v1/user/" + 1, GET, null, User.class);
-    System.out.println(response);
+    var response = restTemplate.exchange("/v1/user/" + 1, GET, null, com.uvocab.api.domain.User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
   }
 }

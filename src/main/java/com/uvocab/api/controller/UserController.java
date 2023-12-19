@@ -1,5 +1,6 @@
 package com.uvocab.api.controller;
 
+import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import uvocab.protobuf.v1.User;
 public class UserController {
 
   private final UserService userService;
+  private final UserMapper userMapper;
 
   @PostMapping
   public ResponseEntity<User> post(@RequestBody User user) {
@@ -19,7 +21,7 @@ public class UserController {
   }
 
   @GetMapping(path = "/{id}")
-  public ResponseEntity<User> get(@PathVariable long id) {
-    return ResponseEntity.ok(userService.findById(id));
+  public ResponseEntity<com.uvocab.api.domain.User> get(@PathVariable long id) {
+    return ResponseEntity.ok(userMapper.toDomain(userService.findById(id)));
   }
 }
