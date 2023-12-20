@@ -43,8 +43,8 @@ class UserControllerTest {
             .build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertTrue(response.getBody().getId() > 1);
     assertEquals(user.getLogin(), response.getBody().getLogin());
     assertEquals(user.getEmail(), response.getBody().getEmail());
+    assertTrue(response.getBody().getId() > 1);
   }
 }
