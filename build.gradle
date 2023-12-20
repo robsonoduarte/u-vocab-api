@@ -144,3 +144,7 @@ sourceSets {
 protobuf {
 	protoc { artifact = "com.google.protobuf:protoc:3.24.3" }
 }
+
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs.add("-parameters")
+}
