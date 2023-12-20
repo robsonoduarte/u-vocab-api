@@ -21,24 +21,30 @@ import uvocab.protobuf.v1.User;
 @TestMethodOrder(OrderAnnotation.class)
 class UserControllerTest {
   @Autowired private TestRestTemplate restTemplate;
-  private int id = 0;
 
   @Test
   @Order(1)
-  void shouldPostTheUser() {
-    var user = User.newBuilder().setLogin("danilo").setEmail("danilo@uvocab.edu").build();
-    var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
-    id = (int) response.getBody().getId();
-    assertTrue(response.getBody().getId() > 0);
+  void shouldGetTheUser() {
+    var id = 1;
+    var response = restTemplate.getForEntity("/v1/user/" + id, User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals("danilo", user.getLogin());
-    assertEquals("danilo@uvocab.edu", user.getEmail());
+    assertEquals(id, response.getBody().getId());
+    assertEquals("robson@uvocab.education", response.getBody().getLogin());
+    assertEquals("robson@uvocab.education", response.getBody().getEmail());
   }
 
   @Test
   @Order(2)
-  void shouldGetTheUser() {
-    var response = restTemplate.getForEntity("/v1/user/" + id, User.class);
+  void shouldPostTheUser() {
+    var user =
+        User.newBuilder()
+            .setLogin("danilo@uvocab.education")
+            .setEmail("danilo@uvocab.education")
+            .build();
+    var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertTrue(response.getBody().getId() > 1);
+    assertEquals(user.getLogin(), response.getBody().getLogin());
+    assertEquals(user.getEmail(), response.getBody().getEmail());
   }
 }
