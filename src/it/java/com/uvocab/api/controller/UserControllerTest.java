@@ -40,7 +40,7 @@ class UserControllerTest {
   void shouldReturnExceptionNotFound() {
     var id = 0;
     ResponseEntity<String> response =
-        restTemplate.exchange("/v1/user/" + 0, GET, null, String.class);
+        restTemplate.exchange("/v1/user/" + id, GET, null, String.class);
     assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     assertEquals("User not found to id: " + id, response.getBody());
   }
