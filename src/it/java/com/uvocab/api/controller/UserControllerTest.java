@@ -2,6 +2,7 @@ package com.uvocab.api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import uvocab.protobuf.v1.User;
 
@@ -35,6 +37,16 @@ class UserControllerTest {
 
   @Test
   @Order(2)
+  void shouldReturnExceptionNotFound() {
+    var id = 0;
+    ResponseEntity<String> response =
+        restTemplate.exchange("/v1/user/" + 0, GET, null, String.class);
+    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    assertEquals("User not found to id: " + id, response.getBody());
+  }
+
+  @Test
+  @Order(3)
   void shouldPostTheUser() {
     var user =
         User.newBuilder()

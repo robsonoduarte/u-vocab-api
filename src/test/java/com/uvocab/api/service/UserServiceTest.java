@@ -63,7 +63,7 @@ class UserServiceTest {
   }
 
   @Test()
-  void shouldThrowAException() {
+  void shouldThrowAException() throws Exception {
     // request -> controller -> service -> repository
     // request <- controller  <-  handlerException <- exp <- service
     var id = 1L;
@@ -73,5 +73,13 @@ class UserServiceTest {
         () -> {
           userService.findById(id);
         });
+
+    Exception thrown =
+        assertThrows(
+            NotFoundException.class,
+            () -> {
+              userService.findById(id);
+            });
+    assertEquals("User not found to id: " + id, thrown.getMessage());
   }
 }
