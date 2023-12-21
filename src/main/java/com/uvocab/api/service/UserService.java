@@ -1,7 +1,6 @@
 package com.uvocab.api.service;
 
 import com.uvocab.api.exception.NotFoundException;
-import com.uvocab.api.handler.ErrorHandler;
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -13,7 +12,6 @@ import uvocab.protobuf.v1.User;
 public class UserService {
   private final UserRepository userRepository;
   private final UserMapper userMapper;
-  private final ErrorHandler errorHandler;
 
   public User save(User user) {
     return userMapper.toProto(userRepository.save(userMapper.toDomain(user)));

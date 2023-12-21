@@ -64,16 +64,8 @@ class UserServiceTest {
 
   @Test()
   void shouldThrowAException() throws Exception {
-    // request -> controller -> service -> repository
-    // request <- controller  <-  handlerException <- exp <- service
-    var id = 1L;
+    var id = 0L;
     when(userRepository.findById(id)).thenReturn(Optional.empty());
-    assertThrows(
-        NotFoundException.class,
-        () -> {
-          userService.findById(id);
-        });
-
     Exception thrown =
         assertThrows(
             NotFoundException.class,
