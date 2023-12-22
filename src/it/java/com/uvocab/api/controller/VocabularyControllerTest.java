@@ -19,12 +19,12 @@ class VocabularyControllerTest {
 
   @Test
   void shouldpostWord() {
-    var word = Vocabulary.newBuilder().setId(1).setWord("Home").build();
+    var vocabulary = Vocabulary.newBuilder().setId(1).setWord("Home").build();
     var response =
         restTemplate.exchange(
-            "/v1/word", HttpMethod.POST, new HttpEntity<>(word), Vocabulary.class);
+            "/v1/word", HttpMethod.POST, new HttpEntity<>(vocabulary), Vocabulary.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(1, response.getBody().getId());
-    assertEquals("Home", word.getWord());
+    assertEquals("Home", vocabulary.getWord());
   }
 }
