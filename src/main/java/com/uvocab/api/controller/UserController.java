@@ -3,10 +3,7 @@ package com.uvocab.api.controller;
 import com.uvocab.api.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uvocab.protobuf.v1.User;
 
 @RestController
@@ -19,5 +16,10 @@ public class UserController {
   @PostMapping
   public ResponseEntity<User> post(@RequestBody User user) {
     return ResponseEntity.ok(userService.save(user));
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<User> get(@PathVariable long id) {
+    return ResponseEntity.ok(userService.findById(id));
   }
 }

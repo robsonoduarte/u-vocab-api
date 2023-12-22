@@ -13,3 +13,5 @@ CREATE TABLE WORD
     ID BIGINT AUTO_INCREMENT PRIMARY KEY,
     VALUE VARCHAR(155)
 );
+
+INSERT INTO USER (LOGIN, EMAIL) VALUES ('robson@uvocab.education', 'robson@uvocab.education');
