@@ -3,23 +3,23 @@ package com.uvocab.api.mapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import uvocab.protobuf.v1.Word;
+import uvocab.protobuf.v1.Vocabulary;
 
-class WordMapperTest {
-  WordMapper mapper = new WordMapper();
+class VocabularyMapperTest {
+  VocabularyMapper mapper = new VocabularyMapper();
 
   @Test
   void shouldMapperWordProtoToWordDomain() {
-    var proto = Word.newBuilder().setValue("Home").build();
+    var proto = Vocabulary.newBuilder().setWord("Home").build();
     var domain = mapper.toDomain(proto);
-    assertEquals("Home", domain.getValue());
+    assertEquals("Home", domain.getWord());
   }
 
   @Test
   void shouldMapperDomainToWordProto() {
-    var domain = com.uvocab.api.domain.Word.builder().id(1).value("Home").build();
+    var domain = com.uvocab.api.domain.Vocabulary.builder().id(1).word("Home").build();
     var proto = mapper.toProto(domain);
     assertEquals(1, proto.getId());
-    assertEquals("Home", proto.getValue());
+    assertEquals("Home", proto.getWord());
   }
 }

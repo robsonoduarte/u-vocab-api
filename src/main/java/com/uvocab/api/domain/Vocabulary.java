@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "WORD")
-public class Word {
+@Table(name = "VOCABULARY")
+public class Vocabulary {
   @Id
   @Column(name = "ID")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   long id;
 
-  @Column(name = "VALUE")
-  String value;
+  @Column(name = "WORD")
+  String word;
 }
