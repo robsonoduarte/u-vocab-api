@@ -4,7 +4,10 @@ import com.uvocab.api.exception.NotFoundException;
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import uvocab.protobuf.v1.User;
 
 @Service
@@ -23,5 +26,11 @@ public class UserService {
       return userMapper.toProto(optional.get());
     }
     throw new NotFoundException("User not found to id: " + id);
+  }
+
+  public Page<User> findAll(@RequestParam int page, @RequestParam int size){
+    var pr = userRepository.findAll(page);
+
+    return ;
   }
 }
