@@ -27,10 +27,4 @@ public class UserService {
     }
     throw new NotFoundException("User not found to id: " + id);
   }
-
-  public Page<User> findAll(@RequestParam int page, @RequestParam int size){
-    var pr = userRepository.findAll(page);
-
-    return ;
-  }
 }
