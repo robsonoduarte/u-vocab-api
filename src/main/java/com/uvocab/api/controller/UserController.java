@@ -25,11 +25,4 @@ public class UserController {
     return ResponseEntity.ok(userService.findById(id));
   }
 
-  @GetMapping(value = "pageable")
-  public ResponseEntity<?> getUserPageable(
-          @RequestParam(defaultValue = "0") final Integer page_number,
-          @RequestParam(defaultValue = "5") final Integer size
-  ){
-    return ResponseEntity.ok(Use)
-  }
 }
