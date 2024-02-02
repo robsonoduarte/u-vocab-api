@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import uvocab.protobuf.v1.Vocabularies;
 
 class VocabularyServiceTest {
 
@@ -42,5 +43,13 @@ class VocabularyServiceTest {
     verify(vocabularyMapper).toDomain(proto);
     verify(vocabularyMapper).toProto(domain);
     verify(vocabularyRepository).save(domain);
+  }
+
+  @Test
+  void shouldReturnPagination() {
+    var results =
+        Vocabularies.newBuilder().setPageNumber(1).setTotalResults(10).setPageNumber(1).build();
+
+    verify(vocabularyRepository).getVocabularyPagination(results);
   }
 }
