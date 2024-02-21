@@ -1,12 +1,11 @@
 package com.uvocab.api.controller;
 
+import com.uvocab.api.service.Filter;
 import com.uvocab.api.service.VocabularyService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import uvocab.protobuf.v1.Vocabularies;
 import uvocab.protobuf.v1.Vocabulary;
 
 @RestController
@@ -18,5 +17,10 @@ public class VocabularyController {
   @PostMapping
   public ResponseEntity<Vocabulary> postWord(@RequestBody Vocabulary word) {
     return ResponseEntity.ok(vocabularyService.save(word));
+  }
+
+  @GetMapping("/list")
+  public ResponseEntity<Vocabularies> listVocab(Filter filter) {
+    return ResponseEntity.ok(vocabularyService.getVocabularies(filter));
   }
 }
