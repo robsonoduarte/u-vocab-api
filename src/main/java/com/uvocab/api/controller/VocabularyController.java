@@ -21,7 +21,6 @@ public class VocabularyController {
 
   @GetMapping("/list")
   public ResponseEntity<Vocabularies> listVocab(Filter filter) {
-    // return ResponseEntity.ok(vocabularyService.getAllWords(page, size));
-    return null;
+    return ResponseEntity.ok(vocabularyService.getVocabularies(filter));
   }
 }
