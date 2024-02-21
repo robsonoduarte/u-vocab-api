@@ -10,6 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
+import uvocab.protobuf.v1.Vocabularies;
 import uvocab.protobuf.v1.Vocabulary;
 
 @ActiveProfiles({"test"})
@@ -26,5 +27,10 @@ class VocabularyControllerTest {
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(1, response.getBody().getId());
     assertEquals("Home", vocabulary.getWord());
+  }
+
+  @Test
+  void shouldList() {
+    var response = restTemplate.getForEntity("/v1/word/list?pageNumber=1", Vocabularies.class);
   }
 }

@@ -7,11 +7,14 @@ import static org.mockito.Mockito.when;
 import com.uvocab.api.domain.Vocabulary;
 import com.uvocab.api.mapper.VocabularyMapper;
 import com.uvocab.api.repository.VocabularyRepository;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import uvocab.protobuf.v1.Vocabularies;
 
 class VocabularyServiceTest {
@@ -23,7 +26,7 @@ class VocabularyServiceTest {
   @InjectMocks private VocabularyService vocabularyService;
 
   @BeforeEach
-  void postWord() {
+  void postTest() {
     MockitoAnnotations.openMocks(this);
   }
 
@@ -47,9 +50,27 @@ class VocabularyServiceTest {
 
   @Test
   void shouldReturnPagination() {
-    var results =
-        Vocabularies.newBuilder().setPageNumber(1).setTotalResults(10).setPageNumber(1).build();
+    var filter = Filter.builder().pageNumber(2).build();
+    var domain = Vocabulary.builder().id(1).build();
+    var proto = uvocab.protobuf.v1.Vocabulary.newBuilder().setId(1).build();
+    var pageRequest = PageRequest.of(1, 10);
+    var page = new PageImpl<>(List.of(domain), pageRequest, 30);
+    var vocabulariesExpected =
+        Vocabularies.newBuilder()
+            .setPageNumber(2)
+            .setTotalResults(30)
+            .setTotalPages(3)
+            .addAllVocabularies(List.of(proto))
+            .build();
 
-    verify(vocabularyRepository).getVocabularyPagination(results);
+    when(vocabularyRepository.findAll(pageRequest)).thenReturn(page);
+    when(vocabularyMapper.toProto(domain)).thenReturn(proto);
+
+    var vocabularies = vocabularyService.getVocabularies(filter);
+
+    assertEquals(vocabulariesExpected, vocabularies);
+
+    verify(vocabularyMapper).toProto(domain);
+    verify(vocabularyRepository).findAll(pageRequest);
   }
 }

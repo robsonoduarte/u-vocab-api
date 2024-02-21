@@ -3,7 +3,6 @@ package com.uvocab.api.service;
 import com.uvocab.api.mapper.VocabularyMapper;
 import com.uvocab.api.repository.VocabularyRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import uvocab.protobuf.v1.Vocabularies;
@@ -19,16 +18,13 @@ public class VocabularyService {
     return vocabularyMapper.toProto(vocabularyRepository.save(vocabularyMapper.toDomain(word)));
   }
 
-  public Vocabularies getVocabularyPagination(int total_results, int page_number, int total_pages) {
-    Page<Vocabulary> vocabularies =
-        vocabularyMapper.toProto(
-            vocabularyRepository.findAll(
-                vocabularyMapper.toDomain(PageRequest.of(total_results, page_number))));
-
+  public Vocabularies getVocabularies(Filter filter) {
+    var page = vocabularyRepository.findAll(PageRequest.of(filter.getPageNumber() - 1, 10));
     return Vocabularies.newBuilder()
-        .addAllVocabularies(vocabularies.getContent())
-        .setPageNumber(vocabularies.getNumber())
-        .setTotalPages(vocabularies.getTotalPages())
+        .addAllVocabularies(page.getContent().stream().map(vocabularyMapper::toProto).toList())
+        .setPageNumber(page.getPageable().getPageNumber() + 1)
+        .setTotalPages(page.getTotalPages())
+        .setTotalResults(page.getTotalElements())
         .build();
   }
 }

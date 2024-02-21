@@ -1,10 +1,11 @@
 package com.uvocab.api.controller;
 
+import com.uvocab.api.service.Filter;
 import com.uvocab.api.service.VocabularyService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import uvocab.protobuf.v1.Vocabularies;
 import uvocab.protobuf.v1.Vocabulary;
 
 @RestController
@@ -18,9 +19,9 @@ public class VocabularyController {
     return ResponseEntity.ok(vocabularyService.save(word));
   }
 
-  @GetMapping
-  public Page<Vocabulary> listVocab(@RequestParam int page, @RequestParam int size) {
-
-    return ResponseEntity.ok(vocabularyService.getAllWords(page, size));
+  @GetMapping("/list")
+  public ResponseEntity<Vocabularies> listVocab(Filter filter) {
+    // return ResponseEntity.ok(vocabularyService.getAllWords(page, size));
+    return null;
   }
 }
