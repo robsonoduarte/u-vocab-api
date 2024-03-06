@@ -19,11 +19,11 @@ class VocabularyControllerTest {
   @Autowired private TestRestTemplate restTemplate;
 
   @Test
-  void shouldpostWord() {
+  void shouldpostVocabulary() {
     var vocabulary = Vocabulary.newBuilder().setWord("Home").build();
     var response =
         restTemplate.exchange(
-            "/v1/word", HttpMethod.POST, new HttpEntity<>(vocabulary), Vocabulary.class);
+            "/v1/vocabulary", HttpMethod.POST, new HttpEntity<>(vocabulary), Vocabulary.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertTrue(response.getBody().getId() > 0);
     assertEquals("Home", vocabulary.getWord());
@@ -31,7 +31,8 @@ class VocabularyControllerTest {
 
   @Test
   void shouldList() {
-    var response = restTemplate.getForEntity("/v1/word/list?pageNumber=1", Vocabularies.class);
+    var response =
+        restTemplate.getForEntity("/v1/vocabulary/list?pageNumber=1", Vocabularies.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(10, response.getBody().getVocabulariesCount());
     assertEquals(1, response.getBody().getPageNumber());

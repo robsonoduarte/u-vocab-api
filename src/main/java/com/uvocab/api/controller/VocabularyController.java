@@ -9,7 +9,7 @@ import uvocab.protobuf.v1.Vocabularies;
 import uvocab.protobuf.v1.Vocabulary;
 
 @RestController
-@RequestMapping("/v1/word")
+@RequestMapping("/v1/vocabulary")
 @AllArgsConstructor
 public class VocabularyController {
   private final VocabularyService vocabularyService;
