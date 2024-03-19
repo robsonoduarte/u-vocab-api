@@ -31,7 +31,7 @@ class VocabularyServiceTest {
   }
 
   @Test
-  void shoudSavetheWord() {
+  void shoudSavetheVocabulary() {
     var domain = Vocabulary.builder().id(1).build();
     var proto = uvocab.protobuf.v1.Vocabulary.newBuilder().setId(1).build();
 

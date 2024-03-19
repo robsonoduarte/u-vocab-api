@@ -14,8 +14,9 @@ public class VocabularyService {
   private final VocabularyRepository vocabularyRepository;
   private final VocabularyMapper vocabularyMapper;
 
-  public Vocabulary save(Vocabulary word) {
-    return vocabularyMapper.toProto(vocabularyRepository.save(vocabularyMapper.toDomain(word)));
+  public Vocabulary save(Vocabulary vocabulary) {
+    return vocabularyMapper.toProto(
+        vocabularyRepository.save(vocabularyMapper.toDomain(vocabulary)));
   }
 
   public Vocabularies getVocabularies(Filter filter) {
