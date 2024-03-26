@@ -7,6 +7,22 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 
 [Read Me First](https://github.com/robsonoduarte/u-vocab-api/blob/main/HELP.md)
 
+### TODO SECURITY/JWT
+
+* [Spring JWT Tutorial](https://www.techgeeknext.com/spring/spring-boot-security-token-authentication-jwt#google_vignette)
+
+* [] dev - AuthUserDetailService with find by login
+* [] dev - User.password -> save 
+* [] dev - User.password -> as crypto
+* [] dev - AuthFilter
+* [] dev - AuthEntryPoint
+* [] dev - AuthService - String authenticate(User user)
+* [] dev - AuthTokenManger
+* [] dev - AuthPasswordEncoder
+* [] dev - AuthConfiguration
+* [] dev - AuthController('/v1/auth') -> POST ResponseEntity<TOKEN> authenticate(@RequestBody User user)
+
+
 ### TODO:
  * `[]` dev - get shuffle work
  * `[]` dev - springboot security with jwt
