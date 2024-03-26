@@ -8,16 +8,8 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 [Read Me First](https://github.com/robsonoduarte/u-vocab-api/blob/main/HELP.md)
 
 ### TODO:
- 
- * `[X]` dev - post user 
- * `[X]` dev - get user
- * `[X]` dev - post word
- * `[X]` dev - get list vocabulary with pagition
  * `[]` dev - get shuffle work
  * `[]` dev - springboot security with jwt
- * `[]` dev - end point auth token jwt
- 
-
 
 ### DONE:
  * `[X]` conf - setup java zulu-20.30.11
@@ -36,3 +28,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
  * `[X]` conf - run image in ec2 ( deploy ) ( makefile )
  * `[X]` conf - separate the unit test and it tests
  * `[X]` dev - simple endpoint with it test - GET
+ * `[X]` dev - post user
+ * `[X]` dev - get user
+ * `[X]` dev - post word
+ * `[X]` dev - get list vocabulary with pagination
