@@ -5,7 +5,8 @@ CREATE TABLE USER
 (
     ID BIGINT AUTO_INCREMENT PRIMARY KEY,
     LOGIN varchar(50),
-    EMAIL varchar(100)
+    EMAIL varchar(100),
+    PASSWORD varchar(16)
 );
 
 CREATE TABLE VOCABULARY
@@ -15,7 +16,7 @@ CREATE TABLE VOCABULARY
 );
 
 -- user
-INSERT INTO USER (LOGIN, EMAIL) VALUES ('robson@uvocab.education', 'robson@uvocab.education');
+INSERT INTO USER (LOGIN, EMAIL, PASSWORD) VALUES ('robson@uvocab.education', 'robson@uvocab.education', '12345');
 
 
 -- vocabulary
