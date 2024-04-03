@@ -9,6 +9,7 @@ public class UserMapper {
     return com.uvocab.api.domain.User.builder()
         .login(user.getLogin())
         .email(user.getEmail())
+        .password(user.getPassword())
         .build();
   }
 
@@ -17,6 +18,7 @@ public class UserMapper {
         .setId(user.getId())
         .setLogin(user.getLogin())
         .setEmail(user.getEmail())
+        .setPassword(user.getPassword())
         .build();
   }
 }
