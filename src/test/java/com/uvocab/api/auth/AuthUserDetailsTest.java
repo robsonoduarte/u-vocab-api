@@ -32,7 +32,7 @@ public class AuthUserDetailsTest {
     var user = User.builder().login(login).password(password).build();
 
     when(userRepository.findByLogin(login)).thenReturn(Optional.of(user));
-    UserDetails userDetails = authUserDetails.loadUserByUsername(login);
+    var userDetails = authUserDetails.loadUserByUsername(login);
 
     assertEquals(user.getLogin(), userDetails.getUsername());
     assertEquals(user.getPassword(), userDetails.getPassword());
@@ -48,7 +48,6 @@ public class AuthUserDetailsTest {
             () -> {
               authUserDetails.loadUserByUsername(login);
             });
-
     assertEquals("User not found", exception.getMessage());
   }
 }
