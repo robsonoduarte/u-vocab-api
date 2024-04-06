@@ -1,7 +1,8 @@
 package com.uvocab.api.auth;
 
+import static java.util.List.of;
+
 import com.uvocab.api.repository.UserRepository;
-import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,7 +20,7 @@ public class AuthUserDetails implements UserDetailsService {
   public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
     return this.userRepository
         .findByLogin(login)
-        .map(user -> new User(user.getLogin(), user.getPassword(), new ArrayList<>()))
+        .map(user -> new User(user.getLogin(), user.getPassword(), of()))
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
   }
 }
