@@ -13,7 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class AuthUserDetailsTest {
+class AuthUserDetailsTest {
 
   @Mock UserRepository userRepository;
 
