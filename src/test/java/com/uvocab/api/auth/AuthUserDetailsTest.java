@@ -41,7 +41,7 @@ public class AuthUserDetailsTest {
   void shouldThrowExceptionWhenNotFoundUserByLogin() {
     var login = "";
     when(userRepository.findByLogin(login)).thenReturn(Optional.empty());
-    Exception exception =
+    var exception =
         assertThrows(
             UsernameNotFoundException.class,
             () -> {
