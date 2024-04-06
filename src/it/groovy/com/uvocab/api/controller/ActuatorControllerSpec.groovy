@@ -18,7 +18,7 @@ class ActuatorControllerSpec extends Specification{
 	@Autowired
 	TestRestTemplate restTemplate
 
-	def "should return the vocab with word ok"(){
+	def "should check if is up"(){
 		def response = restTemplate.exchange('/actuator/health', GET, null, String)
 		expect:
 		response.statusCode == HttpStatus.OK
