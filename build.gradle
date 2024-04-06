@@ -99,7 +99,7 @@ sonar {
 			"${project.projectDir}/src/test/groovy",
 		]
 		property "sonar.coverage.exclusions", [
-			"com.uvocab.api.auth.AuthSecurityConfiguration",
+			"**/com/uvocab/api/auth/AuthSecurityConfiguration",
 		]
 	}
 }
