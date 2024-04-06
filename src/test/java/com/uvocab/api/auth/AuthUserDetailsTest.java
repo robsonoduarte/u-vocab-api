@@ -1,9 +1,9 @@
-package com.uvocab.api.service;
+package com.uvocab.api.auth;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.openMocks;
 
-import com.uvocab.api.auth.AuthUserDetails;
 import com.uvocab.api.domain.User;
 import com.uvocab.api.repository.UserRepository;
 import java.util.Optional;
@@ -11,23 +11,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class AuthUserDetailsTest {
 
-  @Mock private UserRepository userRepository;
+  @Mock UserRepository userRepository;
 
-  @InjectMocks private AuthUserDetails authUserDetails;
+  @InjectMocks AuthUserDetails authUserDetails;
 
   @BeforeEach
   void setup() {
-    MockitoAnnotations.openMocks(this);
+    openMocks(this);
   }
 
   @Test
-  void shouldReturnUserByLogin() {
+  void shouldReturnAUserDetailByUserLogin() {
     var login = "robson@uvocab.education";
     var password = "12345";
     var user = User.builder().login(login).password(password).build();
@@ -40,7 +39,7 @@ public class AuthUserDetailsTest {
   }
 
   @Test
-  void shouldReturnException() {
+  void shouldThrowExceptionWhenNotUserByLogin() {
     var login = "";
     when(userRepository.findByLogin(login)).thenReturn(Optional.empty());
     Exception exception =
