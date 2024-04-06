@@ -18,9 +18,10 @@ class ActuatorControllerSpec extends Specification{
 	@Autowired
 	TestRestTemplate restTemplate
 
-	def "should check if is up"(){
+	def "should check if api is up"(){
+		when:"get the /actuator/health"
 		def response = restTemplate.exchange('/actuator/health', GET, null, String)
-		expect:
+		then:"check if api is up (200)"
 		response.statusCode == HttpStatus.OK
 	}
 }
