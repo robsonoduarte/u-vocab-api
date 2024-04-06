@@ -39,7 +39,7 @@ public class AuthUserDetailsTest {
   }
 
   @Test
-  void shouldThrowExceptionWhenNotUserByLogin() {
+  void shouldThrowExceptionWhenNotFoundUserByLogin() {
     var login = "";
     when(userRepository.findByLogin(login)).thenReturn(Optional.empty());
     Exception exception =
