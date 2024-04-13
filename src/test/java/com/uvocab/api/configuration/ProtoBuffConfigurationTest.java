@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-public class ProtoBuffConfigurationTest {
+class ProtoBuffConfigurationTest {
   private ProtoBuffConfiguration protoBuffConfiguration = new ProtoBuffConfiguration();
 
   @Test
