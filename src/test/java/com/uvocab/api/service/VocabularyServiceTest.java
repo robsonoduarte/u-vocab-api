@@ -4,20 +4,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.uvocab.api.TestBase;
 import com.uvocab.api.domain.Vocabulary;
 import com.uvocab.api.mapper.VocabularyMapper;
 import com.uvocab.api.repository.VocabularyRepository;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import uvocab.protobuf.v1.Vocabularies;
 
-class VocabularyServiceTest {
+class VocabularyServiceTest extends TestBase {
 
   @Mock private VocabularyRepository vocabularyRepository;
 
@@ -25,13 +24,8 @@ class VocabularyServiceTest {
 
   @InjectMocks private VocabularyService vocabularyService;
 
-  @BeforeEach
-  void postTest() {
-    MockitoAnnotations.openMocks(this);
-  }
-
   @Test
-  void shoudSavetheVocabulary() {
+  void shouldSaveTheVocabulary() {
     var domain = Vocabulary.builder().id(1).build();
     var proto = uvocab.protobuf.v1.Vocabulary.newBuilder().setId(1).build();
 

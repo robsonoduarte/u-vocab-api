@@ -1,31 +1,26 @@
 package com.uvocab.api.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.uvocab.api.TestBase;
 import com.uvocab.api.exception.NotFoundException;
 import com.uvocab.api.mapper.UserMapper;
 import com.uvocab.api.repository.UserRepository;
 import java.util.Optional;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-class UserServiceTest {
+class UserServiceTest extends TestBase {
 
   @Mock private UserRepository userRepository;
 
   @Mock private UserMapper userMapper;
 
   @InjectMocks private UserService userService;
-
-  @BeforeEach
-  void setup() {
-    MockitoAnnotations.openMocks(this);
-  }
 
   @Test
   void shouldSaveTheUser() {
@@ -63,15 +58,10 @@ class UserServiceTest {
   }
 
   @Test()
-  void shouldThrowAException() throws Exception {
+  void shouldThrowAException() {
     var id = 0L;
     when(userRepository.findById(id)).thenReturn(Optional.empty());
-    Exception thrown =
-        assertThrows(
-            NotFoundException.class,
-            () -> {
-              userService.findById(id);
-            });
+    Exception thrown = assertThrows(NotFoundException.class, () -> userService.findById(id));
     assertEquals("User not found to id: " + id, thrown.getMessage());
   }
 }
