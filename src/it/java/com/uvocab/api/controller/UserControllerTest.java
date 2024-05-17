@@ -22,17 +22,18 @@ class UserControllerTest {
   @Test
   void shouldGetTheUser() {
     var id = 1;
-    var response = restTemplate.getForEntity("/v1/user/" + id, User.class);
+    var response = restTemplate.getForEntity("/v1/register/" + id, User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(id, response.getBody().getId());
     assertEquals("robson@uvocab.education", response.getBody().getLogin());
     assertEquals("robson@uvocab.education", response.getBody().getEmail());
+    assertEquals("12345", response.getBody().getPassword());
   }
 
   @Test
   void shouldReturnExceptionNotFound() {
     var id = 0;
-    ResponseEntity<String> response = restTemplate.getForEntity("/v1/user/" + id, String.class);
+    ResponseEntity<String> response = restTemplate.getForEntity("/v1/register/" + id, String.class);
     assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     assertEquals("User not found to id: " + id, response.getBody());
   }
@@ -43,11 +44,13 @@ class UserControllerTest {
         User.newBuilder()
             .setLogin("danilo@uvocab.education")
             .setEmail("danilo@uvocab.education")
+            .setPassword("12345")
             .build();
-    var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
+    var response = restTemplate.exchange("/v1/register", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(user.getLogin(), response.getBody().getLogin());
     assertEquals(user.getEmail(), response.getBody().getEmail());
+    assertEquals(user.getPassword(), response.getBody().getPassword());
     assertTrue(response.getBody().getId() > 1);
   }
 }

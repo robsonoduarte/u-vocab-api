@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import uvocab.protobuf.v1.User;
 
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/v1/register")
 @AllArgsConstructor
 public class UserController {
 
