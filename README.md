@@ -19,7 +19,7 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 * `[]` dev - AuthService - String authenticate(User user)
 * `[]` dev - AuthTokenManger
 * `[]` dev - AuthPasswordEncoder
-* `[]` dev - AuthConfigurationS
+* `[]` dev - AuthConfiguration
 * `[]` dev - AuthController('/v1/auth') -> POST ResponseEntity<TOKEN> authenticate(@RequestBody User user)
 
 
