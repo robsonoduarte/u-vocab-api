@@ -27,6 +27,7 @@ class UserControllerTest {
     assertEquals(id, response.getBody().getId());
     assertEquals("robson@uvocab.education", response.getBody().getLogin());
     assertEquals("robson@uvocab.education", response.getBody().getEmail());
+    assertEquals("12345", response.getBody().getPassword());
   }
 
   @Test
@@ -43,11 +44,13 @@ class UserControllerTest {
         User.newBuilder()
             .setLogin("danilo@uvocab.education")
             .setEmail("danilo@uvocab.education")
+            .setPassword("12345")
             .build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(user.getLogin(), response.getBody().getLogin());
     assertEquals(user.getEmail(), response.getBody().getEmail());
+    assertEquals(user.getPassword(), response.getBody().getPassword());
     assertTrue(response.getBody().getId() > 1);
   }
 }

@@ -11,8 +11,8 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 
 * [Spring JWT Tutorial](https://www.techgeeknext.com/spring/spring-boot-security-token-authentication-jwt#google_vignette)
 
-* `[]` dev - AuthUserDetailService with find by login
-* `[]` dev - User.password -> save 
+* `[X]` dev - AuthUserDetailService with find by login
+* `[X]` dev - User.password -> save 
 * `[]` dev - User.password -> as crypto
 * `[]` dev - AuthFilter
 * `[]` dev - AuthEntryPoint
