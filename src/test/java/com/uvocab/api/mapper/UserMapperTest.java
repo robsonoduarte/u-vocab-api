@@ -10,10 +10,16 @@ class UserMapperTest {
 
   @Test
   void shouldMapperUserProtoToUserDomain() {
-    var proto = User.newBuilder().setLogin("danilo").setEmail("danilo@uvocab.edu").build();
+    var proto =
+        User.newBuilder()
+            .setLogin("danilo")
+            .setEmail("danilo@uvocab.edu")
+            .setPassword("12345")
+            .build();
     var domain = mapper.toDomain(proto);
     assertEquals("danilo", domain.getLogin());
     assertEquals("danilo@uvocab.edu", domain.getEmail());
+    assertEquals("12345", domain.getPassword());
   }
 
   @Test
@@ -23,10 +29,12 @@ class UserMapperTest {
             .id(1)
             .login("robson")
             .email("robson@uvocab.edu")
+            .password("12345")
             .build();
     var proto = mapper.toProto(domain);
     assertEquals(1, proto.getId());
     assertEquals("robson", proto.getLogin());
     assertEquals("robson@uvocab.edu", proto.getEmail());
+    assertEquals("12345", proto.getPassword());
   }
 }
