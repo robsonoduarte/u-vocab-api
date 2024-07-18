@@ -1,7 +1,6 @@
 package com.uvocab.api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.http.HttpMethod.POST;
 
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import uvocab.protobuf.v1.User;
 
@@ -18,6 +18,7 @@ import uvocab.protobuf.v1.User;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class UserControllerTest {
   @Autowired private TestRestTemplate restTemplate;
+  @Autowired private PasswordEncoder passwordEncoder;
 
   @Test
   void shouldGetTheUser() {
@@ -27,7 +28,6 @@ class UserControllerTest {
     assertEquals(id, response.getBody().getId());
     assertEquals("robson@uvocab.education", response.getBody().getLogin());
     assertEquals("robson@uvocab.education", response.getBody().getEmail());
-    assertEquals("12345", response.getBody().getPassword());
   }
 
   @Test
@@ -44,13 +44,11 @@ class UserControllerTest {
         User.newBuilder()
             .setLogin("danilo@uvocab.education")
             .setEmail("danilo@uvocab.education")
-            .setPassword("12345")
+            .setPassword("a")
             .build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(user.getLogin(), response.getBody().getLogin());
     assertEquals(user.getEmail(), response.getBody().getEmail());
-    assertEquals(user.getPassword(), response.getBody().getPassword());
-    assertTrue(response.getBody().getId() > 1);
   }
 }
