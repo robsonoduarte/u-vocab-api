@@ -10,7 +10,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import uvocab.protobuf.v1.User;
 
@@ -18,7 +17,6 @@ import uvocab.protobuf.v1.User;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class UserControllerTest {
   @Autowired private TestRestTemplate restTemplate;
-  @Autowired private PasswordEncoder passwordEncoder;
 
   @Test
   void shouldGetTheUser() {
@@ -44,7 +42,7 @@ class UserControllerTest {
         User.newBuilder()
             .setLogin("danilo@uvocab.education")
             .setEmail("danilo@uvocab.education")
-            .setPassword("a")
+            .setPassword("12345")
             .build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
