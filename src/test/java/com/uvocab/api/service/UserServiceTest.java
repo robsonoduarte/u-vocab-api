@@ -80,11 +80,11 @@ class UserServiceTest extends TestBase {
             .setLogin("robson@uvocab.education")
             .setPassword("12345")
             .build();
-    var tokenToReturn = "token";
+    var tokenToReturn = "str_token";
 
     when(userService.login(login)).thenReturn(tokenToReturn);
 
-    assertEquals(tokenToReturn, "token");
+    assertEquals(tokenToReturn, "str_token");
 
   }
 }
