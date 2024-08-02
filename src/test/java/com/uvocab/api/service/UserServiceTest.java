@@ -72,4 +72,19 @@ class UserServiceTest extends TestBase {
     Exception thrown = assertThrows(NotFoundException.class, () -> userService.findById(id));
     assertEquals("User not found to id: " + id, thrown.getMessage());
   }
+
+  @Test()
+  void shouldValidateUser() {
+    var login = uvocab.protobuf.v1.User.newBuilder().setLogin("robson@uvocab.education").setPassword("12345").build();
+    var tokenToReturn = "token";
+
+    when(userService.login(login)).thenReturn(tokenToReturn);
+
+    //assertEquals(tokenToReturn, "token");
+
+
+
+
+
+  }
 }

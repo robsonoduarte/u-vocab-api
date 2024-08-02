@@ -22,4 +22,7 @@ public class UserController {
   public ResponseEntity<User> get(@PathVariable long id) {
     return ResponseEntity.ok(userService.findById(id));
   }
+
+  @PostMapping
+  public ResponseEntity<String> validate(@RequestBody User user) {return ResponseEntity.ok(userService.login(user));}
 }
