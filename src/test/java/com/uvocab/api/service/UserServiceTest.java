@@ -75,16 +75,16 @@ class UserServiceTest extends TestBase {
 
   @Test()
   void shouldValidateUser() {
-    var login = uvocab.protobuf.v1.User.newBuilder().setLogin("robson@uvocab.education").setPassword("12345").build();
+    var login =
+        uvocab.protobuf.v1.User.newBuilder()
+            .setLogin("robson@uvocab.education")
+            .setPassword("12345")
+            .build();
     var tokenToReturn = "token";
 
     when(userService.login(login)).thenReturn(tokenToReturn);
 
-    //assertEquals(tokenToReturn, "token");
-
-
-
-
+    // assertEquals(tokenToReturn, "token");
 
   }
 }

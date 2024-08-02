@@ -24,5 +24,7 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<String> validate(@RequestBody User user) {return ResponseEntity.ok(userService.login(user));}
+  public ResponseEntity<String> validate(@RequestBody User user) {
+    return ResponseEntity.ok(userService.login(user));
+  }
 }

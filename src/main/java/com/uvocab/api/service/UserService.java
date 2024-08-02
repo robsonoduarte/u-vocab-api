@@ -18,7 +18,6 @@ public class UserService {
   private final PasswordEncoder passwordEncoder;
   private final AuthenticationManager authenticationManager;
 
-
   private static final String FIXED_TOKEN = "str_token";
 
   public User save(User user) {
@@ -36,13 +35,14 @@ public class UserService {
     throw new NotFoundException("User not found to id: " + id);
   }
 
-  public String login(User user){
+  public String login(User user) {
     var existUser = userRepository.findByLogin(user.getLogin());
-    if (existUser.isPresent()){
-      var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
+    if (existUser.isPresent()) {
+      var authentication =
+          authenticationManager.authenticate(
+              new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
       return FIXED_TOKEN;
     }
     throw new NotFoundException("Login not found");
   }
-
 }
