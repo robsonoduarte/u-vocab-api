@@ -84,7 +84,7 @@ class UserServiceTest extends TestBase {
 
     when(userService.login(login)).thenReturn(tokenToReturn);
 
-    // assertEquals(tokenToReturn, "token");
+    assertEquals(tokenToReturn, "token");
 
   }
 }
