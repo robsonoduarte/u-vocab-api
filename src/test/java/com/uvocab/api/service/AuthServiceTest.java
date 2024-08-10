@@ -1,12 +1,20 @@
 package com.uvocab.api.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 public class AuthServiceTest {
+
+  @Mock private AuthenticationManager authenticationManager;
 
   @InjectMocks private AuthService authService;
 
@@ -17,10 +25,15 @@ public class AuthServiceTest {
             .setLogin("robson@uvocab.education")
             .setPassword("12345")
             .build();
-    var tokenToReturn = "str_token";
 
-    when(authService.login(login)).thenReturn(tokenToReturn);
+    Authentication authentication = mock(Authentication.class);
+    when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
+        .thenReturn(authentication);
 
-    assertEquals(tokenToReturn, "str_token");
+    var token = authService.login(login);
+
+    verify(authenticationManager).authenticate(any(UsernamePasswordAuthenticationToken.class));
+    assertEquals("str_token", token);
+    assertEquals(authentication, SecurityContextHolder.getContext().getAuthentication());
   }
 }
