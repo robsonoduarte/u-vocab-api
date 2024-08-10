@@ -21,6 +21,9 @@ public class AuthService {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
     SecurityContextHolder.getContext().setAuthentication(authentication);
-    return FIXED_TOKEN;
+    if (authentication.isAuthenticated()){
+        return FIXED_TOKEN;
+    }
+    else throw new RuntimeException("Falha ao autenticar");
   }
 }
