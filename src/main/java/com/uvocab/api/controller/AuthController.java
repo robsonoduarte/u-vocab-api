@@ -1,6 +1,6 @@
 package com.uvocab.api.controller;
 
-import com.uvocab.api.service.AuthService;
+import com.uvocab.api.auth.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

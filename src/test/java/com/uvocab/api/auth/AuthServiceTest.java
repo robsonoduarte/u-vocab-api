@@ -1,4 +1,4 @@
-package com.uvocab.api.service;
+package com.uvocab.api.auth;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
