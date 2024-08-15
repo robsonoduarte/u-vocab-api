@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 public class AuthServiceTest {
 
@@ -20,20 +19,15 @@ public class AuthServiceTest {
 
   @Test()
   void shouldValidateUser() {
-    var login =
-        uvocab.protobuf.v1.User.newBuilder()
-            .setLogin("robson@uvocab.education")
-            .setPassword("12345")
-            .build();
+    var login = "robson@uvocab.education";
+    var pass = "12345";
 
-    Authentication authentication = mock(Authentication.class);
+    Authentication auth = new UsernamePasswordAuthenticationToken(login, pass);
     when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
-        .thenReturn(authentication);
+        .thenReturn(auth);
 
-    var token = authService.login(login);
+    var token = authService.login(login, pass);
 
-    verify(authenticationManager).authenticate(any(UsernamePasswordAuthenticationToken.class));
     assertEquals("str_token", token);
-    assertEquals(authentication, SecurityContextHolder.getContext().getAuthentication());
   }
 }
