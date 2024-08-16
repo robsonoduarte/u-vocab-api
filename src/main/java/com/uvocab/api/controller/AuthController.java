@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import uvocab.protobuf.v1.User;
 
 @RestController
 @RequestMapping("/v1/auth")
@@ -16,7 +17,7 @@ public class AuthController {
   private final AuthService authService;
 
   @PostMapping
-  public ResponseEntity<String> validate(@RequestBody String login, String password) {
-    return ResponseEntity.ok(authService.login(login, password));
+  public ResponseEntity<String> validate(@RequestBody User user) {
+    return ResponseEntity.ok(authService.login(user));
   }
 }

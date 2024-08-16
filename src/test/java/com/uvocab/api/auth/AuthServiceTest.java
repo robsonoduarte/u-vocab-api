@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import uvocab.protobuf.v1.User;
 
 public class AuthServiceTest extends TestBase {
 
@@ -18,11 +19,10 @@ public class AuthServiceTest extends TestBase {
 
   @Test()
   void shouldValidateUser() {
-    var login = "robson@uvocab.education";
-    var pass = "12345";
-    var token = authService.login(login, pass);
+    var user = User.newBuilder().setLogin("danilo@uvocab.education").setPassword("12345").build();
+    var token = authService.login(user);
     assertEquals("str_token", token);
     verify(authenticationManager)
-        .authenticate(new UsernamePasswordAuthenticationToken(login, pass));
+        .authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
   }
 }
