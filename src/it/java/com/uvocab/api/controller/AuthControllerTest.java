@@ -1,6 +1,7 @@
 package com.uvocab.api.controller;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,10 +20,21 @@ public class AuthControllerTest {
 
   @Test
   void shouldAuthenticateUser() {
-    var user = User.newBuilder().setLogin("danilo@uvocab.education").setPassword("12345").build();
+    var user = User.newBuilder().setLogin("robson@uvocab.education").setPassword("12345").build();
     ResponseEntity<String> response =
         restTemplate.exchange("/v1/auth", HttpMethod.POST, new HttpEntity<>(user), String.class);
 
-    Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertNotNull(response.getBody());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
+  }
+
+  @Test
+  void shouldReturnForbiddenException() {
+    var user = User.newBuilder().setLogin("danilo@uvocab.education").setPassword("12345").build();
+
+    ResponseEntity<String> response =
+        restTemplate.exchange("/v1/auth", HttpMethod.POST, new HttpEntity<>(user), String.class);
+
+    assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
   }
 }

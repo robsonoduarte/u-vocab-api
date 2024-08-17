@@ -16,7 +16,7 @@ CREATE TABLE VOCABULARY
 );
 
 -- user
-INSERT INTO USER (LOGIN, EMAIL, PASSWORD) VALUES ('robson@uvocab.education', 'robson@uvocab.education', '12345');
+INSERT INTO USER (LOGIN, EMAIL, PASSWORD) VALUES ('robson@uvocab.education', 'robson@uvocab.education', '$2a$10$Nv7EzKfb7hbNSdVRP2/MmOlp1LTiFO0IITMm9xRHNlwPJ/r3kEpHe');
 
 
 -- vocabulary

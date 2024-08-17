@@ -13,14 +13,14 @@ The api for [u_vocab](https://github.com/robsonoduarte/u_vocab) app
 
 * `[X]` dev - AuthUserDetailService with find by login
 * `[X]` dev - User.password -> save 
-* `[]` dev - User.password -> as crypto
+* `[X]` dev - User.password -> as crypto
 * `[]` dev - AuthFilter
 * `[]` dev - AuthEntryPoint
 * `[]` dev - AuthService - String authenticate(User user)
 * `[]` dev - AuthTokenManger
 * `[]` dev - AuthPasswordEncoder
 * `[]` dev - AuthConfiguration
-* `[]` dev - AuthController('/v1/auth') -> POST ResponseEntity<TOKEN> authenticate(@RequestBody User user)
+* `[X]` dev - AuthController('/v1/auth') -> POST ResponseEntity<TOKEN> authenticate(@RequestBody User user)
 
 
 ### TODO:
