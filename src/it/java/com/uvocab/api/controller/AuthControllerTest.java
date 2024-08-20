@@ -1,13 +1,14 @@
 package com.uvocab.api.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.http.HttpMethod.POST;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
@@ -19,22 +20,27 @@ public class AuthControllerTest {
   @Autowired private TestRestTemplate restTemplate;
 
   @Test
-  void shouldAuthenticateUser() {
-    var user = User.newBuilder().setLogin("robson@uvocab.education").setPassword("12345").build();
-    ResponseEntity<String> response =
-        restTemplate.exchange("/v1/auth", HttpMethod.POST, new HttpEntity<>(user), String.class);
+  void shouldHandleAuthentication() {
 
-    assertNotNull(response.getBody());
-    assertEquals(HttpStatus.OK, response.getStatusCode());
-  }
+    List<Object[]> testCases =
+        List.of(
+            new Object[] {"robson@uvocab.education", "12345", HttpStatus.OK},
+            new Object[] {"danilo@uvocab.education", "12345", HttpStatus.FORBIDDEN});
 
-  @Test
-  void shouldReturnForbiddenException() {
-    var user = User.newBuilder().setLogin("danilo@uvocab.education").setPassword("12345").build();
+    for (Object[] testCase : testCases) {
+      String login = (String) testCase[0];
+      String password = (String) testCase[1];
+      HttpStatus expectedStatus = (HttpStatus) testCase[2];
 
-    ResponseEntity<String> response =
-        restTemplate.exchange("/v1/auth", HttpMethod.POST, new HttpEntity<>(user), String.class);
+      var user = User.newBuilder().setLogin(login).setPassword(password).build();
+      ResponseEntity<String> response =
+          restTemplate.exchange("/v1/auth", POST, new HttpEntity<>(user), String.class);
 
-    assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+      assertEquals(expectedStatus, response.getStatusCode());
+
+      if (expectedStatus == HttpStatus.OK) {
+        assertNotNull(response.getBody());
+      }
+    }
   }
 }
