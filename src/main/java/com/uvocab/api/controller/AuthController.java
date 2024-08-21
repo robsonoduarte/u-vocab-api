@@ -18,6 +18,6 @@ public class AuthController {
 
   @PostMapping
   public ResponseEntity<String> validate(@RequestBody User user) {
-    return ResponseEntity.ok(authService.login(user));
+    return ResponseEntity.ok(authService.signIn(user));
   }
 }

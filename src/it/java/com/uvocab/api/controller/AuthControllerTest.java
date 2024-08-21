@@ -2,8 +2,11 @@ package com.uvocab.api.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.HttpStatus.OK;
 
 import java.util.List;
+import lombok.Builder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,8 +27,8 @@ public class AuthControllerTest {
 
     List<Object[]> testCases =
         List.of(
-            new Object[] {"robson@uvocab.education", "12345", HttpStatus.OK},
-            new Object[] {"danilo@uvocab.education", "12345", HttpStatus.FORBIDDEN});
+            new Object[] {"robson@uvocab.education", "12345", OK},
+            new Object[] {"danilo@uvocab.education", "12345", FORBIDDEN});
 
     for (Object[] testCase : testCases) {
       String login = (String) testCase[0];
@@ -38,9 +41,46 @@ public class AuthControllerTest {
 
       assertEquals(expectedStatus, response.getStatusCode());
 
-      if (expectedStatus == HttpStatus.OK) {
+      if (expectedStatus == OK) {
         assertNotNull(response.getBody());
       }
     }
+  }
+
+  @Test
+  void shouldHandleAuthenticationByBravox() {
+    // only to compare with your test...
+    // I tried to use the "fluent" resources of java 8 and above...
+    List.of(
+            TestCase.builder()
+                .email("robson@uvocab.education")
+                .password("12345")
+                .status(OK)
+                .build(),
+            TestCase.builder()
+                .email("danilo@uvocab.education")
+                .password("12345")
+                .status(FORBIDDEN)
+                .build())
+        .forEach(
+            testCase -> {
+              var user =
+                  User.newBuilder().setLogin(testCase.email).setPassword(testCase.password).build();
+              var response =
+                  restTemplate.exchange("/v1/auth", POST, new HttpEntity<>(user), String.class);
+
+              assertEquals(testCase.status, response.getStatusCode());
+
+              if (testCase.status == OK) {
+                assertNotNull(response.getBody());
+              }
+            });
+  }
+
+  @Builder
+  static class TestCase {
+    String email;
+    String password;
+    HttpStatus status;
   }
 }

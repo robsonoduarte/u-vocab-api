@@ -14,7 +14,7 @@ public class AuthService {
 
   private final AuthenticationManager authenticationManager;
 
-  public String login(User user) {
+  public String signIn(User user) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
     return FIXED_TOKEN;

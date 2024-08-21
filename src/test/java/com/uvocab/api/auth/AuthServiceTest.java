@@ -18,9 +18,9 @@ public class AuthServiceTest extends TestBase {
   @InjectMocks private AuthService authService;
 
   @Test()
-  void shouldValidateUser() {
+  void shouldSignInTheUser() {
     var user = User.newBuilder().setLogin("danilo@uvocab.education").setPassword("12345").build();
-    var token = authService.login(user);
+    var token = authService.signIn(user);
     assertEquals("str_token", token);
     verify(authenticationManager)
         .authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
