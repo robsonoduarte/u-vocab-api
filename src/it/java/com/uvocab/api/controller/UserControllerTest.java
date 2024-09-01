@@ -40,8 +40,8 @@ class UserControllerTest {
   void shouldPostTheUser() {
     var user =
         User.newBuilder()
-            .setLogin("danilo@uvocab.education")
-            .setEmail("danilo@uvocab.education")
+            .setLogin("robson@uvocab.education")
+            .setEmail("robson@uvocab.education")
             .setPassword("12345")
             .build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
