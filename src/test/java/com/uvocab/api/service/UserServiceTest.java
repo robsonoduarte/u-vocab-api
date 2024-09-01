@@ -13,6 +13,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 class UserServiceTest extends TestBase {
 
@@ -20,16 +21,22 @@ class UserServiceTest extends TestBase {
 
   @Mock private UserMapper userMapper;
 
+  @Mock private PasswordEncoder passwordEncoder;
+
   @InjectMocks private UserService userService;
 
   @Test
   void shouldSaveTheUser() {
+    var password = "123";
+    var passwordCrypt = "xpto";
     var domain = com.uvocab.api.domain.User.builder().id(1).build();
-    var proto = uvocab.protobuf.v1.User.newBuilder().setId(1).build();
+    var domainToSave = com.uvocab.api.domain.User.builder().id(1).password(passwordCrypt).build();
+    var proto = uvocab.protobuf.v1.User.newBuilder().setId(1).setPassword(password).build();
 
     when(userMapper.toDomain(proto)).thenReturn(domain);
     when(userMapper.toProto(domain)).thenReturn(proto);
-    when(userRepository.save(domain)).thenReturn(domain);
+    when(userRepository.save(domainToSave)).thenReturn(domain);
+    when(passwordEncoder.encode(password)).thenReturn(passwordCrypt);
 
     var protoSaved = userService.save(proto);
 
@@ -37,7 +44,8 @@ class UserServiceTest extends TestBase {
 
     verify(userMapper).toDomain(proto);
     verify(userMapper).toProto(domain);
-    verify(userRepository).save(domain);
+    verify(userRepository).save(domainToSave);
+    verify(passwordEncoder).encode(password);
   }
 
   @Test

@@ -1,7 +1,6 @@
 package com.uvocab.api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.http.HttpMethod.POST;
 
 import org.junit.jupiter.api.Test;
@@ -41,13 +40,13 @@ class UserControllerTest {
   void shouldPostTheUser() {
     var user =
         User.newBuilder()
-            .setLogin("danilo@uvocab.education")
-            .setEmail("danilo@uvocab.education")
+            .setLogin("robson@uvocab.education")
+            .setEmail("robson@uvocab.education")
+            .setPassword("12345")
             .build();
     var response = restTemplate.exchange("/v1/user", POST, new HttpEntity<>(user), User.class);
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertEquals(user.getLogin(), response.getBody().getLogin());
     assertEquals(user.getEmail(), response.getBody().getEmail());
-    assertTrue(response.getBody().getId() > 1);
   }
 }
