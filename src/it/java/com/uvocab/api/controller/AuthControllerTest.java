@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import uvocab.protobuf.v1.User;
 
@@ -24,33 +23,6 @@ public class AuthControllerTest {
 
   @Test
   void shouldHandleAuthentication() {
-
-    List<Object[]> testCases =
-        List.of(
-            new Object[] {"robson@uvocab.education", "12345", OK},
-            new Object[] {"danilo@uvocab.education", "12345", FORBIDDEN});
-
-    for (Object[] testCase : testCases) {
-      String login = (String) testCase[0];
-      String password = (String) testCase[1];
-      HttpStatus expectedStatus = (HttpStatus) testCase[2];
-
-      var user = User.newBuilder().setLogin(login).setPassword(password).build();
-      ResponseEntity<String> response =
-          restTemplate.exchange("/v1/auth", POST, new HttpEntity<>(user), String.class);
-
-      assertEquals(expectedStatus, response.getStatusCode());
-
-      if (expectedStatus == OK) {
-        assertNotNull(response.getBody());
-      }
-    }
-  }
-
-  @Test
-  void shouldHandleAuthenticationByBravox() {
-    // only to compare with your test...
-    // I tried to use the "fluent" resources of java 8 and above...
     List.of(
             TestCase.builder()
                 .email("robson@uvocab.education")
