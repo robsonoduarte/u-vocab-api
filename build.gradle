@@ -60,6 +60,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'com.google.protobuf:protobuf-java:3.24.3'
 	implementation 'com.google.protobuf:protobuf-java-util:3.24.3'
+	implementation 'io.jsonwebtoken:jjwt:0.12.6'
 
 	runtimeOnly 'com.mysql:mysql-connector-j'
 

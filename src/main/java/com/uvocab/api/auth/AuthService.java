@@ -10,13 +10,12 @@ import uvocab.protobuf.v1.User;
 @AllArgsConstructor
 public class AuthService {
 
-  private static final String FIXED_TOKEN = "str_token";
-
   private final AuthenticationManager authenticationManager;
+  private final JwtToken jwtToken;
 
   public String signIn(User user) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
-    return FIXED_TOKEN;
+    return jwtToken.generateToken(user.getLogin());
   }
 }
